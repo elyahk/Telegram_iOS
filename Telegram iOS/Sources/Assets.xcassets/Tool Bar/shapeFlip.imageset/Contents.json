@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "shapeFlip.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

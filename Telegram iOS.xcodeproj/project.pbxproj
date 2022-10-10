@@ -11,6 +11,10 @@
 		6E5F5F5228F4988A00FDBDE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F5F5128F4988A00FDBDE7 /* Assets.xcassets */; };
 		6E5F5F5528F4988A00FDBDE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F5F5328F4988A00FDBDE7 /* LaunchScreen.storyboard */; };
 		6E5F5F6028F4988B00FDBDE7 /* Telegram_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F5F5F28F4988B00FDBDE7 /* Telegram_iOSTests.swift */; };
+		6E5F5F7C28F4B66000FDBDE7 /* duck.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F5F7A28F4B66000FDBDE7 /* duck.json */; };
+		6E5F5F7D28F4B66000FDBDE7 /* duck.tgs in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F5F7B28F4B66000FDBDE7 /* duck.tgs */; };
+		6E5F5F8028F4B68C00FDBDE7 /* backToCancel.tgs in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F5F7E28F4B68C00FDBDE7 /* backToCancel.tgs */; };
+		6E5F5F8128F4B68C00FDBDE7 /* backToCancel.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F5F7F28F4B68C00FDBDE7 /* backToCancel.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +35,10 @@
 		6E5F5F5628F4988A00FDBDE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E5F5F5B28F4988B00FDBDE7 /* Telegram iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Telegram iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5F5F5F28F4988B00FDBDE7 /* Telegram_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telegram_iOSTests.swift; sourceTree = "<group>"; };
+		6E5F5F7A28F4B66000FDBDE7 /* duck.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = duck.json; sourceTree = "<group>"; };
+		6E5F5F7B28F4B66000FDBDE7 /* duck.tgs */ = {isa = PBXFileReference; lastKnownFileType = file; path = duck.tgs; sourceTree = "<group>"; };
+		6E5F5F7E28F4B68C00FDBDE7 /* backToCancel.tgs */ = {isa = PBXFileReference; lastKnownFileType = file; path = backToCancel.tgs; sourceTree = "<group>"; };
+		6E5F5F7F28F4B68C00FDBDE7 /* backToCancel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = backToCancel.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +80,8 @@
 		6E5F5F4728F4988900FDBDE7 /* Telegram iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6E5F5F7828F4B62800FDBDE7 /* Sources */,
 				6E5F5F4828F4988900FDBDE7 /* AppDelegate.swift */,
-				6E5F5F5128F4988A00FDBDE7 /* Assets.xcassets */,
 				6E5F5F5328F4988A00FDBDE7 /* LaunchScreen.storyboard */,
 				6E5F5F5628F4988A00FDBDE7 /* Info.plist */,
 			);
@@ -86,6 +94,26 @@
 				6E5F5F5F28F4988B00FDBDE7 /* Telegram_iOSTests.swift */,
 			);
 			path = "Telegram iOSTests";
+			sourceTree = "<group>";
+		};
+		6E5F5F7828F4B62800FDBDE7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				6E5F5F7928F4B64200FDBDE7 /* JsonAnimation */,
+				6E5F5F5128F4988A00FDBDE7 /* Assets.xcassets */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		6E5F5F7928F4B64200FDBDE7 /* JsonAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				6E5F5F7F28F4B68C00FDBDE7 /* backToCancel.json */,
+				6E5F5F7E28F4B68C00FDBDE7 /* backToCancel.tgs */,
+				6E5F5F7A28F4B66000FDBDE7 /* duck.json */,
+				6E5F5F7B28F4B66000FDBDE7 /* duck.tgs */,
+			);
+			path = JsonAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +198,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E5F5F5528F4988A00FDBDE7 /* LaunchScreen.storyboard in Resources */,
+				6E5F5F8128F4B68C00FDBDE7 /* backToCancel.json in Resources */,
+				6E5F5F8028F4B68C00FDBDE7 /* backToCancel.tgs in Resources */,
+				6E5F5F7C28F4B66000FDBDE7 /* duck.json in Resources */,
 				6E5F5F5228F4988A00FDBDE7 /* Assets.xcassets in Resources */,
+				6E5F5F7D28F4B66000FDBDE7 /* duck.tgs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
