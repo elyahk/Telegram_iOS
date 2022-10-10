@@ -86,9 +86,10 @@ Contestants will be able to submit their entries to @ContestBot at the end of th
 
 ### Screens
 
-  Allow access             |  Gallery          |           Creative 
+  Allow access | Gallery | Creative 
 :-------------------------:|:-------------------------:|:-------------------------:
 ![Allow access](docs/screens/allow_access.png)  |  ![Gallery](docs/screens/02%20gallery.png) | ![Allow access](docs/screens/03%20creative%20tools.png)
+ Allow access | Gallery | Creative
 :-------------------------:|:-------------------------:|:-------------------------:
 ![Allow access](docs/screens/04%20creative%20tools.png)  |  ![Gallery](docs/screens/05%20color%20grid.png) | ![Allow access](docs/screens/06%20color%20spectrum.png)
 :-------------------------:|:-------------------------:|:-------------------------:
