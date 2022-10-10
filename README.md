@@ -88,6 +88,6 @@ Contestants will be able to submit their entries to @ContestBot at the end of th
 
 Solarized dark             |  Solarized Ocean          |  Solarized Ocean          
 :-------------------------:|:-------------------------:|:-------------------------:
-![Allow access](docs/screens/allow_access.png)  |  ![Gallery](docs/screens/02%20gallery.png) | ![Allow access](docs/screens/allow_access.png)
-:-------------------------:|:-------------------------:|:-------------------------:
+![Allow access](docs/screens/allow_access.png)  |  ![Gallery](docs/screens/02%20gallery.png) | ![Allow access](docs/screens/allow_access.
+                           |                           |
 ![Allow access](docs/screens/allow_access.png)  |  ![Gallery](docs/screens/02%20gallery.png) | ![Allow access](docs/screens/allow_access.png)
