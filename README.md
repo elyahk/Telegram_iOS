@@ -86,7 +86,7 @@ Contestants will be able to submit their entries to @ContestBot at the end of th
 
 ### Screens
 
-Solarized dark             |  Solarized Ocean          |  Solarized Ocean          
+  Allow access             |  Gallery          |           Creative 
 :-------------------------:|:-------------------------:|:-------------------------:
 ![Allow access](docs/screens/allow_access.png)  |  ![Gallery](docs/screens/02%20gallery.png) | ![Allow access](docs/screens/03%20creative%20tools.png)
 :-------------------------:|:-------------------------:|:-------------------------:
