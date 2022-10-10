@@ -3,7 +3,7 @@
 ![Xcode verions](https://github.com/superdispatch/carrier-tms-ios/blob/badges/.github/badges/xcode-version.svg)
 ![iOS version](https://github.com/superdispatch/carrier-tms-ios/blob/badges/.github/badges/ios-version.svg)
 [![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/file/I8F304rYVnfoxSH4cfi1JL/iOS-Contest?node-id=18%3A1373)
-![(Jira board)[https://elyahk.atlassian.net/jira/software/projects/PEA/boards/2]](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)
+[![Jira board](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)](https://elyahk.atlassian.net/jira/software/projects/PEA/boards/2)
 
 ## Table of Contents
 
