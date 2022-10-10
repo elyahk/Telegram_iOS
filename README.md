@@ -89,11 +89,11 @@ Contestants will be able to submit their entries to @ContestBot at the end of th
   Allow access | Gallery | Creative 
 :-------------------------:|:-------------------------:|:-------------------------:
 ![Allow access](docs/screens/allow_access.png)  |  ![Gallery](docs/screens/02%20gallery.png) | ![Allow access](docs/screens/03%20creative%20tools.png)
- Allow access | Gallery | Creative
+ Creative tools | Color grid | Color spectrum
 ![Allow access](docs/screens/04%20creative%20tools.png)  |  ![Gallery](docs/screens/05%20color%20grid.png) | ![Allow access](docs/screens/06%20color%20spectrum.png)
-:-------------------------:|:-------------------------:|:-------------------------:
+Color sliders | Pen weight | Shape
 ![Allow access](docs/screens/07%20color%20sliders.png)  |  ![Gallery](docs/screens/08%20pen%20weight.png) | ![Allow access](docs/screens/09%20shape.png)
-:-------------------------:|:-------------------------:|:-------------------------:
+Add more | Text | Move shapes
 ![Allow access](docs/screens/10%20add%20more.png)  |  ![Gallery](docs/screens/11%20text.png) | ![Allow access](docs/screens/12%20move%20shapes.png)
-:-------------------------:|:-------------------------:|:-------------------------:
+Text | Zoom out | Empty
 ![Allow access](docs/screens/13%20text.png)  |  ![Gallery](docs/screens/14%20zoom%20out.png)
