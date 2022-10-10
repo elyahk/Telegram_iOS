@@ -8,25 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6E5F5F4928F4988900FDBDE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F5F4828F4988900FDBDE7 /* AppDelegate.swift */; };
-		6E5F5F4B28F4988900FDBDE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F5F4A28F4988900FDBDE7 /* SceneDelegate.swift */; };
-		6E5F5F4D28F4988900FDBDE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F5F4C28F4988900FDBDE7 /* ViewController.swift */; };
-		6E5F5F5028F4988900FDBDE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F5F4E28F4988900FDBDE7 /* Main.storyboard */; };
 		6E5F5F5228F4988A00FDBDE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F5F5128F4988A00FDBDE7 /* Assets.xcassets */; };
 		6E5F5F5528F4988A00FDBDE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F5F5328F4988A00FDBDE7 /* LaunchScreen.storyboard */; };
 		6E5F5F6028F4988B00FDBDE7 /* Telegram_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F5F5F28F4988B00FDBDE7 /* Telegram_iOSTests.swift */; };
-		6E5F5F6A28F4988B00FDBDE7 /* Telegram_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F5F6928F4988B00FDBDE7 /* Telegram_iOSUITests.swift */; };
-		6E5F5F6C28F4988B00FDBDE7 /* Telegram_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F5F6B28F4988B00FDBDE7 /* Telegram_iOSUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		6E5F5F5C28F4988B00FDBDE7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6E5F5F3D28F4988900FDBDE7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6E5F5F4428F4988900FDBDE7;
-			remoteInfo = "Telegram iOS";
-		};
-		6E5F5F6628F4988B00FDBDE7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6E5F5F3D28F4988900FDBDE7 /* Project object */;
 			proxyType = 1;
@@ -38,17 +26,11 @@
 /* Begin PBXFileReference section */
 		6E5F5F4528F4988900FDBDE7 /* Telegram iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Telegram iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5F5F4828F4988900FDBDE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6E5F5F4A28F4988900FDBDE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6E5F5F4C28F4988900FDBDE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6E5F5F4F28F4988900FDBDE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6E5F5F5128F4988A00FDBDE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E5F5F5428F4988A00FDBDE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E5F5F5628F4988A00FDBDE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E5F5F5B28F4988B00FDBDE7 /* Telegram iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Telegram iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5F5F5F28F4988B00FDBDE7 /* Telegram_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telegram_iOSTests.swift; sourceTree = "<group>"; };
-		6E5F5F6528F4988B00FDBDE7 /* Telegram iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Telegram iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E5F5F6928F4988B00FDBDE7 /* Telegram_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telegram_iOSUITests.swift; sourceTree = "<group>"; };
-		6E5F5F6B28F4988B00FDBDE7 /* Telegram_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telegram_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,13 +48,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E5F5F6228F4988B00FDBDE7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,7 +56,6 @@
 			children = (
 				6E5F5F4728F4988900FDBDE7 /* Telegram iOS */,
 				6E5F5F5E28F4988B00FDBDE7 /* Telegram iOSTests */,
-				6E5F5F6828F4988B00FDBDE7 /* Telegram iOSUITests */,
 				6E5F5F4628F4988900FDBDE7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +65,6 @@
 			children = (
 				6E5F5F4528F4988900FDBDE7 /* Telegram iOS.app */,
 				6E5F5F5B28F4988B00FDBDE7 /* Telegram iOSTests.xctest */,
-				6E5F5F6528F4988B00FDBDE7 /* Telegram iOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,9 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				6E5F5F4828F4988900FDBDE7 /* AppDelegate.swift */,
-				6E5F5F4A28F4988900FDBDE7 /* SceneDelegate.swift */,
-				6E5F5F4C28F4988900FDBDE7 /* ViewController.swift */,
-				6E5F5F4E28F4988900FDBDE7 /* Main.storyboard */,
 				6E5F5F5128F4988A00FDBDE7 /* Assets.xcassets */,
 				6E5F5F5328F4988A00FDBDE7 /* LaunchScreen.storyboard */,
 				6E5F5F5628F4988A00FDBDE7 /* Info.plist */,
@@ -116,15 +86,6 @@
 				6E5F5F5F28F4988B00FDBDE7 /* Telegram_iOSTests.swift */,
 			);
 			path = "Telegram iOSTests";
-			sourceTree = "<group>";
-		};
-		6E5F5F6828F4988B00FDBDE7 /* Telegram iOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				6E5F5F6928F4988B00FDBDE7 /* Telegram_iOSUITests.swift */,
-				6E5F5F6B28F4988B00FDBDE7 /* Telegram_iOSUITestsLaunchTests.swift */,
-			);
-			path = "Telegram iOSUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,24 +126,6 @@
 			productReference = 6E5F5F5B28F4988B00FDBDE7 /* Telegram iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6E5F5F6428F4988B00FDBDE7 /* Telegram iOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6E5F5F7528F4988B00FDBDE7 /* Build configuration list for PBXNativeTarget "Telegram iOSUITests" */;
-			buildPhases = (
-				6E5F5F6128F4988B00FDBDE7 /* Sources */,
-				6E5F5F6228F4988B00FDBDE7 /* Frameworks */,
-				6E5F5F6328F4988B00FDBDE7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6E5F5F6728F4988B00FDBDE7 /* PBXTargetDependency */,
-			);
-			name = "Telegram iOSUITests";
-			productName = "Telegram iOSUITests";
-			productReference = 6E5F5F6528F4988B00FDBDE7 /* Telegram iOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,10 +140,6 @@
 						CreatedOnToolsVersion = 13.4.1;
 					};
 					6E5F5F5A28F4988B00FDBDE7 = {
-						CreatedOnToolsVersion = 13.4.1;
-						TestTargetID = 6E5F5F4428F4988900FDBDE7;
-					};
-					6E5F5F6428F4988B00FDBDE7 = {
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = 6E5F5F4428F4988900FDBDE7;
 					};
@@ -221,7 +160,6 @@
 			targets = (
 				6E5F5F4428F4988900FDBDE7 /* Telegram iOS */,
 				6E5F5F5A28F4988B00FDBDE7 /* Telegram iOSTests */,
-				6E5F5F6428F4988B00FDBDE7 /* Telegram iOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -233,18 +171,10 @@
 			files = (
 				6E5F5F5528F4988A00FDBDE7 /* LaunchScreen.storyboard in Resources */,
 				6E5F5F5228F4988A00FDBDE7 /* Assets.xcassets in Resources */,
-				6E5F5F5028F4988900FDBDE7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6E5F5F5928F4988B00FDBDE7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E5F5F6328F4988B00FDBDE7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -258,9 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E5F5F4D28F4988900FDBDE7 /* ViewController.swift in Sources */,
 				6E5F5F4928F4988900FDBDE7 /* AppDelegate.swift in Sources */,
-				6E5F5F4B28F4988900FDBDE7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,15 +200,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E5F5F6128F4988B00FDBDE7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E5F5F6A28F4988B00FDBDE7 /* Telegram_iOSUITests.swift in Sources */,
-				6E5F5F6C28F4988B00FDBDE7 /* Telegram_iOSUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -289,22 +208,9 @@
 			target = 6E5F5F4428F4988900FDBDE7 /* Telegram iOS */;
 			targetProxy = 6E5F5F5C28F4988B00FDBDE7 /* PBXContainerItemProxy */;
 		};
-		6E5F5F6728F4988B00FDBDE7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6E5F5F4428F4988900FDBDE7 /* Telegram iOS */;
-			targetProxy = 6E5F5F6628F4988B00FDBDE7 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6E5F5F4E28F4988900FDBDE7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6E5F5F4F28F4988900FDBDE7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6E5F5F5328F4988A00FDBDE7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -366,7 +272,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -420,7 +326,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -441,7 +347,6 @@
 				INFOPLIST_FILE = "Telegram iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -468,7 +373,6 @@
 				INFOPLIST_FILE = "Telegram iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -522,40 +426,6 @@
 			};
 			name = Release;
 		};
-		6E5F5F7628F4988B00FDBDE7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "elyahk.Telegram-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Telegram iOS";
-			};
-			name = Debug;
-		};
-		6E5F5F7728F4988B00FDBDE7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "elyahk.Telegram-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Telegram iOS";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -582,15 +452,6 @@
 			buildConfigurations = (
 				6E5F5F7328F4988B00FDBDE7 /* Debug */,
 				6E5F5F7428F4988B00FDBDE7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6E5F5F7528F4988B00FDBDE7 /* Build configuration list for PBXNativeTarget "Telegram iOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6E5F5F7628F4988B00FDBDE7 /* Debug */,
-				6E5F5F7728F4988B00FDBDE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
