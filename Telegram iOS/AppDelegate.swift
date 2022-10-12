@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.overrideUserInterfaceStyle = .light
+        window?.overrideUserInterfaceStyle = .dark
         let compositionController = MainCompositionController()
         window?.rootViewController = compositionController.getTopViewController()
 
