@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 class ImageCollectionViewCell: UICollectionViewCell {
     static let cellName: String = String(describing: ImageCollectionViewCell.self)
