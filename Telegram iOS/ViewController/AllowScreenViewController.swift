@@ -6,7 +6,6 @@
 //
 import Lottie
 import UIKit
-import Photos
 
 class AllowScreenViewController: UIViewController {
     private let assertPhotosAccessManager = AssertPhotosAccessManager.shared
