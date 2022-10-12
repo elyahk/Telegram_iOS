@@ -8,7 +8,6 @@ import Lottie
 import UIKit
 
 class AllowScreenViewController: UIViewController{
-    
     lazy var duckAnimationView: LottieAnimationView = {
         var view = LottieAnimationView()
         view = .init(name: "duck")
@@ -25,7 +24,6 @@ class AllowScreenViewController: UIViewController{
         view.text = "Access Your Photos and Videos"
         view.font = UIFont(name: "SFProDisplay-Semibold", size: 20)
         view.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-//        view.attributedText = NSMutableAttributedString(string: "Access Your Photos and Videos", attributes: [NSAttributedString.Key.kern: 0.38, NSAttributedString.Key.paragraphStyle: paragraphStyle])
         view.textAlignment = .center
         
         return view
@@ -42,6 +40,19 @@ class AllowScreenViewController: UIViewController{
         return button
     }()
 
+    lazy var shimmerView: ShimmeringView = {
+        let view = ShimmeringView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentView = allowButton
+        view.isShimmering = false
+        view.shimmerSpeed = 500
+        view.shimmerPauseDuration = 1.0
+        view.shimmerAnimationOpacity = 0.8
+        view.shimmerHighlightLength = 0.7
+
+        return view
+    }()
+
     lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -51,14 +62,22 @@ class AllowScreenViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupSubviews()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.shimmerView.isShimmering = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.shimmerView.isShimmering = false
+        }
     }
     
     func setupSubviews(){
         view.addSubview(contentView)
         contentView.addSubview(duckAnimationView)
         contentView.addSubview(label)
-        contentView.addSubview(allowButton)
+        contentView.addSubview(shimmerView)
         
         NSLayoutConstraint.activate([
             contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -73,11 +92,13 @@ class AllowScreenViewController: UIViewController{
             label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16.0),
             label.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16.0),
             
-            allowButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 28),
-            allowButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            allowButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            allowButton.heightAnchor.constraint(equalToConstant: 50),
-            allowButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            shimmerView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 28),
+            shimmerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            shimmerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            shimmerView.heightAnchor.constraint(equalToConstant: 50),
+            shimmerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+
+        view.layoutIfNeeded()
     }
 }
