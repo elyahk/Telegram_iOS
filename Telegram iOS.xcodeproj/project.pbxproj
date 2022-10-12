@@ -222,9 +222,17 @@
 			isa = PBXGroup;
 			children = (
 				6EE8CA1928F77040007D6C94 /* TopToolbar.swift */,
-				6EE8CA1B28F7706F007D6C94 /* ImageCollectionViewCell.swift */,
+				6EE8CA1D28F770B7007D6C94 /* Cell */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		6EE8CA1D28F770B7007D6C94 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6EE8CA1B28F7706F007D6C94 /* ImageCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
