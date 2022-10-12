@@ -25,6 +25,7 @@
 		6EE8CA0928F74D8D007D6C94 /* ShimmeringLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE8CA0528F74D8D007D6C94 /* ShimmeringLayer.swift */; };
 		6EE8CA0A28F74D8D007D6C94 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE8CA0628F74D8D007D6C94 /* Shimmer.swift */; };
 		6EE8CA0B28F74D8D007D6C94 /* ShimmeringMaskLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE8CA0728F74D8D007D6C94 /* ShimmeringMaskLayer.swift */; };
+		6EE8CA0F28F753C3007D6C94 /* AssertPhotosAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE8CA0E28F753C3007D6C94 /* AssertPhotosAccessManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		6EE8CA0528F74D8D007D6C94 /* ShimmeringLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimmeringLayer.swift; sourceTree = "<group>"; };
 		6EE8CA0628F74D8D007D6C94 /* Shimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		6EE8CA0728F74D8D007D6C94 /* ShimmeringMaskLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimmeringMaskLayer.swift; sourceTree = "<group>"; };
+		6EE8CA0E28F753C3007D6C94 /* AssertPhotosAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssertPhotosAccessManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		6E55799228F5F6BA005B7C65 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				6EE8CA0D28F753A5007D6C94 /* Manager */,
 				6E55799328F5F6C5005B7C65 /* Extensions */,
 			);
 			path = Service;
@@ -183,6 +186,14 @@
 				6EE8CA0328F74D8D007D6C94 /* Shimmer */,
 			);
 			path = "Extra Resources";
+			sourceTree = "<group>";
+		};
+		6EE8CA0D28F753A5007D6C94 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				6EE8CA0E28F753C3007D6C94 /* AssertPhotosAccessManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +309,7 @@
 				6EE8CA0928F74D8D007D6C94 /* ShimmeringLayer.swift in Sources */,
 				6E5F5F4928F4988900FDBDE7 /* AppDelegate.swift in Sources */,
 				6E55799528F5F6DB005B7C65 /* UIImageView+ImageAsset.swift in Sources */,
+				6EE8CA0F28F753C3007D6C94 /* AssertPhotosAccessManager.swift in Sources */,
 				6E1FE0D028F6B5BA00DC4C2D /* ImageViewController.swift in Sources */,
 				6EE8CA0A28F74D8D007D6C94 /* Shimmer.swift in Sources */,
 				0FBD9C4B28F6D30F003A2A64 /* AllowScreenViewController.swift in Sources */,

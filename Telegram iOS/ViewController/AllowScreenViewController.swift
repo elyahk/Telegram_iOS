@@ -6,9 +6,14 @@
 //
 import Lottie
 import UIKit
+import Photos
 
-class AllowScreenViewController: UIViewController{
-    lazy var duckAnimationView: LottieAnimationView = {
+class AllowScreenViewController: UIViewController {
+    private let assertPhotosAccessManager = AssertPhotosAccessManager.shared
+
+    public var events: Events = .init()
+
+    private(set) lazy var duckAnimationView: LottieAnimationView = {
         var view = LottieAnimationView()
         view = .init(name: "duck")
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -18,7 +23,7 @@ class AllowScreenViewController: UIViewController{
         return view
     }()
     
-    lazy var label: UILabel = {
+    private(set) lazy var label: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.text = "Access Your Photos and Videos"
@@ -29,59 +34,43 @@ class AllowScreenViewController: UIViewController{
         return view
     }()
     
-    lazy var allowButton: UIButton = {
+    private(set) lazy var allowButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Allow Access", for: .normal)
         button.backgroundColor = .link
         button.clipsToBounds = true
         button.layer.cornerRadius = 10.0
+        button.addTarget(self, action: #selector(touchUpInside(allow:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(touchUpInside(allow:)), for: .touchUpInside)
         
         return button
     }()
 
-    lazy var shimmerView: ShimmeringView = {
-        let view = ShimmeringView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentView = allowButton
-        view.isShimmering = false
-        view.shimmerSpeed = 500
-        view.shimmerPauseDuration = 1.0
-        view.shimmerAnimationOpacity = 0.8
-        view.shimmerHighlightLength = 0.7
-
-        return view
-    }()
-
-    lazy var contentView: UIView = {
+    private(set) lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
 
         return view
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupSubviews()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.shimmerView.isShimmering = true
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.shimmerView.isShimmering = false
-        }
     }
     
-    func setupSubviews(){
+    private func setupSubviews(){
         view.addSubview(contentView)
         contentView.addSubview(duckAnimationView)
         contentView.addSubview(label)
-        contentView.addSubview(shimmerView)
+        contentView.addSubview(allowButton)
         
         NSLayoutConstraint.activate([
             contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             contentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            contentView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            contentView.rightAnchor.constraint(equalTo: view.rightAnchor),
 
             duckAnimationView.topAnchor.constraint(equalTo: contentView.topAnchor),
             duckAnimationView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -92,13 +81,25 @@ class AllowScreenViewController: UIViewController{
             label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16.0),
             label.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16.0),
             
-            shimmerView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 28),
-            shimmerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            shimmerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            shimmerView.heightAnchor.constraint(equalToConstant: 50),
-            shimmerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            allowButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 28),
+            allowButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            allowButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            allowButton.heightAnchor.constraint(equalToConstant: 50),
+            allowButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
 
         view.layoutIfNeeded()
+    }
+
+    @objc func touchUpInside(allow button: UIButton) {
+        assertPhotosAccessManager.getPermissionIfNecessary { [weak self] success in
+            self?.events.assertPhotosAccess?(success)
+        }
+    }
+}
+
+extension AllowScreenViewController {
+    public struct Events {
+        var assertPhotosAccess: ((Bool) -> Void)?
     }
 }
