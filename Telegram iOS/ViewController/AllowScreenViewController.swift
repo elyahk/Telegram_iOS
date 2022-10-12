@@ -7,7 +7,7 @@
 import Lottie
 import UIKit
 
-class AllowScreenViewController: UIViewController {
+class AllowScreenViewController: RootViewController {
     private let assertPhotosAccessManager = AssertPhotosAccessManager.shared
 
     public var events: Events = .init()

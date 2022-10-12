@@ -9,7 +9,7 @@ import UIKit
 import PencilKit
 import Photos
 
-class ImageViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerObserver {
+class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPickerObserver {
     public var asset: PHAsset = PHAsset() {
         didSet { getPhoto() }
     }

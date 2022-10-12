@@ -15,7 +15,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
 
         return view
     }()
@@ -39,6 +40,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
             imageView.rightAnchor.constraint(equalTo: self.rightAnchor),
             imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
+
+        clipsToBounds = true
     }
 
     func addAsset(_ asset: PHAsset) {
@@ -48,7 +51,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     }
 }
 
-class ImagesCollectionViewController: UIViewController {
+class ImagesCollectionViewController: RootViewController {
     private var allPhotos = PHFetchResult<PHAsset>()
 
     private lazy var collectionView: UICollectionView = {
@@ -64,6 +67,7 @@ class ImagesCollectionViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         view.dataSource = self
+        view.backgroundColor = .black
         view.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.cellName)
 
         return view
@@ -80,10 +84,10 @@ class ImagesCollectionViewController: UIViewController {
         view.addSubview(collectionView)
 
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 

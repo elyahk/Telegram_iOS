@@ -15,20 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow()
         window?.makeKeyAndVisible()
-        let controller = AllowScreenViewController()
-        window?.rootViewController = controller
-
-        controller.events.assertPhotosAccess = { [weak controller] success in
-            if success {
-                DispatchQueue.main.async {
-                    let imagesController = ImagesCollectionViewController()
-                    imagesController.modalPresentationStyle = .fullScreen
-                    imagesController.modalTransitionStyle = .flipHorizontal
-
-                    controller?.present(imagesController, animated: true)
-                }
-            }
-        }
+        window?.overrideUserInterfaceStyle = .light
+        let compositionController = MainCompositionController()
+        window?.rootViewController = compositionController.getTopViewController()
 
         return true
     }
