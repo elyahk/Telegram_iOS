@@ -41,6 +41,13 @@ class AllowScreenViewController: UIViewController{
         
         return button
     }()
+
+    lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,24 +55,29 @@ class AllowScreenViewController: UIViewController{
     }
     
     func setupSubviews(){
-        view.addSubview(duckAnimationView)
-        view.addSubview(label)
-        view.addSubview(allowButton)
+        view.addSubview(contentView)
+        contentView.addSubview(duckAnimationView)
+        contentView.addSubview(label)
+        contentView.addSubview(allowButton)
         
         NSLayoutConstraint.activate([
-            duckAnimationView.topAnchor.constraint(equalTo: view.topAnchor, constant: 289),
-            duckAnimationView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 123),
-            duckAnimationView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -123),
+            contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            contentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+
+            duckAnimationView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            duckAnimationView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             duckAnimationView.heightAnchor.constraint(equalToConstant: 144),
+            duckAnimationView.widthAnchor.constraint(equalToConstant: 144),
             
-            label.topAnchor.constraint(equalTo: duckAnimationView.bottomAnchor, constant: 28),
-            label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50.5),
-            label.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50.5),
+            label.topAnchor.constraint(equalTo: duckAnimationView.bottomAnchor, constant: 20),
+            label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16.0),
+            label.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16.0),
             
-            allowButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 20),
+            allowButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 28),
             allowButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
             allowButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            allowButton.heightAnchor.constraint(equalToConstant: 50)
+            allowButton.heightAnchor.constraint(equalToConstant: 50),
+            allowButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }
