@@ -127,7 +127,7 @@
 		6E5F5F4728F4988900FDBDE7 /* Telegram iOS */ = {
 			isa = PBXGroup;
 			children = (
-				6EE8CA0328F74D8D007D6C94 /* Shimmer */,
+				6EE8CA0C28F75113007D6C94 /* Extra Resources */,
 				6E55799228F5F6BA005B7C65 /* Service */,
 				6E55798D28F5EEFE005B7C65 /* ViewController */,
 				6E5F5F7828F4B62800FDBDE7 /* Sources */,
@@ -175,6 +175,14 @@
 				6EE8CA0728F74D8D007D6C94 /* ShimmeringMaskLayer.swift */,
 			);
 			path = Shimmer;
+			sourceTree = "<group>";
+		};
+		6EE8CA0C28F75113007D6C94 /* Extra Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6EE8CA0328F74D8D007D6C94 /* Shimmer */,
+			);
+			path = "Extra Resources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
