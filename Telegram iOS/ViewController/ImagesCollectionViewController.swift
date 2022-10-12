@@ -15,6 +15,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFit
 
         return view
     }()
@@ -102,7 +103,13 @@ class ImagesCollectionViewController: UIViewController {
 // MARK: - UICollectionView Delegate
 
 extension ImagesCollectionViewController: UICollectionViewDelegate {
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = ImageViewController()
+        controller.asset = allPhotos[indexPath.row]
+        controller.modalTransitionStyle = .flipHorizontal
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true, completion: nil)
+    }
 }
 
 // MARK: - UICollectionView DataSource
