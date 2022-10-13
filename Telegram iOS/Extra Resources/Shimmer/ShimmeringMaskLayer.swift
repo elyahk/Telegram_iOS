@@ -23,6 +23,7 @@ final class ShimmeringMaskLayer: CAGradientLayer {
         super.init(layer: layer)
     }
     override func layoutSublayers() {
+        
         super.layoutSublayers()
         let rect = bounds
         fadeLayer.bounds = rect

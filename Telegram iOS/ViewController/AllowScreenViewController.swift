@@ -27,6 +27,7 @@ class AllowScreenViewController: RootViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.text = "Access Your Photos and Videos"
         view.font = UIFont(name: "SFProDisplay-Semibold", size: 20)
+        view.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         view.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         view.textAlignment = .center
         
@@ -40,11 +41,24 @@ class AllowScreenViewController: RootViewController {
         button.backgroundColor = .link
         button.clipsToBounds = true
         button.layer.cornerRadius = 10.0
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(touchUpInside(allow:)), for: .touchUpInside)
         button.addTarget(self, action: #selector(touchUpInside(allow:)), for: .touchUpInside)
         
         return button
     }()
+    
+    private(set) lazy var shimmer: ShimmeringView = {
+        let shimmer = ShimmeringView()
+        shimmer.translatesAutoresizingMaskIntoConstraints = false
+        shimmer.contentView = allowButton
+        shimmer.backgroundColor = .white
+        shimmer.layer.cornerRadius = 10.0
+        shimmer.isShimmering = true
+        
+        return shimmer
+    }()
+    
 
     private(set) lazy var contentView: UIView = {
         let view = UIView()
@@ -55,15 +69,15 @@ class AllowScreenViewController: RootViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupSubviews()
+        shimmer.shimmerSpeed = 450
     }
     
     private func setupSubviews(){
         view.addSubview(contentView)
         contentView.addSubview(duckAnimationView)
         contentView.addSubview(label)
-        contentView.addSubview(allowButton)
+        contentView.addSubview(shimmer)
         
         NSLayoutConstraint.activate([
             contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -80,11 +94,11 @@ class AllowScreenViewController: RootViewController {
             label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16.0),
             label.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16.0),
             
-            allowButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 28),
-            allowButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            allowButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            allowButton.heightAnchor.constraint(equalToConstant: 50),
-            allowButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            shimmer.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 28),
+            shimmer.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
+            shimmer.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
+            shimmer.heightAnchor.constraint(equalToConstant: 50),
+            shimmer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
 
         view.layoutIfNeeded()
