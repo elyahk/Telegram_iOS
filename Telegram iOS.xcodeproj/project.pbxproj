@@ -105,11 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0FA9A17028F9AFD300652E47 /* Instrument Bar  */ = {
+		6E37567428F9F03B00CC8B14 /* TGDrawingTools */ = {
 			isa = PBXGroup;
 			children = (
+				6E37567228F9EEC000CC8B14 /* TGDrawingToolType.swift */,
+				6E6D810828F89CEA00C574F7 /* TGDrawingTool.swift */,
+				6E5D090928F961C600905288 /* TGDrawingTools.swift */,
 			);
-			path = "Instrument Bar ";
+			path = TGDrawingTools;
 			sourceTree = "<group>";
 		};
 		6E55798D28F5EEFE005B7C65 /* ViewController */ = {
@@ -173,7 +176,6 @@
 		6E5F5F4728F4988900FDBDE7 /* Telegram iOS */ = {
 			isa = PBXGroup;
 			children = (
-				0FA9A17028F9AFD300652E47 /* Instrument Bar  */,
 				6EE8CA1828F77033007D6C94 /* Views */,
 				6EE8CA1028F758A7007D6C94 /* CompositionController */,
 				6EE8CA0C28F75113007D6C94 /* Extra Resources */,
@@ -254,9 +256,7 @@
 		6EE8CA1828F77033007D6C94 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6E37567228F9EEC000CC8B14 /* TGDrawingToolType.swift */,
-				6E6D810828F89CEA00C574F7 /* TGDrawingTool.swift */,
-				6E5D090928F961C600905288 /* TGDrawingTools.swift */,
+				6E37567428F9F03B00CC8B14 /* TGDrawingTools */,
 				6EE8CA1928F77040007D6C94 /* TopToolbar.swift */,
 				6EE8CA1D28F770B7007D6C94 /* Cell */,
 				6E5D090E28F9678300905288 /* TestPenView.swift */,
