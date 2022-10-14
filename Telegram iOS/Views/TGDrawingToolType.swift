@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum ToolType {
+enum TGDrawingToolType {
     case pen
     case brush
     case neon

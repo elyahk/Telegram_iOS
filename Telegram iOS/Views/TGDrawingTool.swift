@@ -8,7 +8,7 @@
 import UIKit
 
 class TGDrawingTool: UIView {
-    public var type: ToolType {
+    public var type: TGDrawingToolType {
         didSet { updateType() }
     }
 
@@ -40,7 +40,7 @@ class TGDrawingTool: UIView {
         return view
     }()
 
-    convenience init(type: ToolType) {
+    convenience init(type: TGDrawingToolType) {
         self.init(frame: .zero)
 
         self.type = type
