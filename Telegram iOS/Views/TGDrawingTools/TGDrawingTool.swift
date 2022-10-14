@@ -84,7 +84,7 @@ class TGDrawingTool: UIView {
 
             whiteRectangleleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: universalWidth(1.5)),
             whiteRectangleleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -universalWidth(1.5)),
-            whiteRectangleleView.topAnchor.constraint(equalTo: topAnchor,constant: universalHeight(35.0)),
+            whiteRectangleleView.topAnchor.constraint(equalTo: topAnchor,constant: universalHeight(38.0)),
             whiteRectangleleView.heightAnchor.constraint(equalToConstant: universalHeight(3.0))
 
         ])

@@ -40,11 +40,11 @@ class Test: UIViewController{
             image.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             image.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             image.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -196.0),
-            
+
             instrumentView.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 40.0),
-            instrumentView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 77.0),
-            instrumentView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -77.0),
-            instrumentView.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -70.0),
+            instrumentView.widthAnchor.constraint(equalToConstant: universalWidth(240.0)),
+            instrumentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            instrumentView.heightAnchor.constraint(equalToConstant: 93.0)
         ])
     }
 }
