@@ -7,23 +7,6 @@
 
 import UIKit
 
-let windowHeight = UIScreen.main.bounds.height
-let windowWidth = UIScreen.main.bounds.width
-
-public func universalWidth(_ width: CGFloat) -> CGFloat {
-    return width / 375 * windowWidth
-}
-
-public func universalHeight(_ height: CGFloat) -> CGFloat {
-    return height / 812 * windowHeight
-}
-
-public extension CGRect {
-    func universal() -> CGRect {
-        CGRect(x: universalWidth(minX), y: universalHeight(minY), width: universalWidth(width), height: universalHeight(height))
-    }
-}
-
 class TGDrawingTool: UIView {
     private(set) lazy var baseToolImageView: UIImageView = {
         let view = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 83).universal())
