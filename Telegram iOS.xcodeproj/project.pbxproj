@@ -13,6 +13,7 @@
 		6E55798F28F5EF17005B7C65 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E55798E28F5EF17005B7C65 /* CustomViewController.swift */; };
 		6E55799128F5F102005B7C65 /* ImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E55799028F5F102005B7C65 /* ImagesCollectionViewController.swift */; };
 		6E55799528F5F6DB005B7C65 /* UIImageView+ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E55799428F5F6DB005B7C65 /* UIImageView+ImageAsset.swift */; };
+		6E5D090A28F961C600905288 /* TGDrawingTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5D090928F961C600905288 /* TGDrawingTools.swift */; };
 		6E5F5F4928F4988900FDBDE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5F5F4828F4988900FDBDE7 /* AppDelegate.swift */; };
 		6E5F5F5228F4988A00FDBDE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F5F5128F4988A00FDBDE7 /* Assets.xcassets */; };
 		6E5F5F5528F4988A00FDBDE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5F5F5328F4988A00FDBDE7 /* LaunchScreen.storyboard */; };
@@ -51,6 +52,7 @@
 		6E55798E28F5EF17005B7C65 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		6E55799028F5F102005B7C65 /* ImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewController.swift; sourceTree = "<group>"; };
 		6E55799428F5F6DB005B7C65 /* UIImageView+ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageAsset.swift"; sourceTree = "<group>"; };
+		6E5D090928F961C600905288 /* TGDrawingTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGDrawingTools.swift; sourceTree = "<group>"; };
 		6E5F5F4528F4988900FDBDE7 /* Telegram iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Telegram iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5F5F4828F4988900FDBDE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E5F5F5128F4988A00FDBDE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -226,9 +228,10 @@
 		6EE8CA1828F77033007D6C94 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6E6D810828F89CEA00C574F7 /* TGDrawingTool.swift */,
+				6E5D090928F961C600905288 /* TGDrawingTools.swift */,
 				6EE8CA1928F77040007D6C94 /* TopToolbar.swift */,
 				6EE8CA1D28F770B7007D6C94 /* Cell */,
-				6E6D810828F89CEA00C574F7 /* TGDrawingTool.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				6EE8CA1528F75A60007D6C94 /* RootViewController.swift in Sources */,
 				6EE8CA1A28F77040007D6C94 /* TopToolbar.swift in Sources */,
 				6E1FE0D028F6B5BA00DC4C2D /* ImageViewController.swift in Sources */,
+				6E5D090A28F961C600905288 /* TGDrawingTools.swift in Sources */,
 				6EE8CA0A28F74D8D007D6C94 /* Shimmer.swift in Sources */,
 				0FBD9C4B28F6D30F003A2A64 /* AllowScreenViewController.swift in Sources */,
 				6E6D810928F89CEA00C574F7 /* TGDrawingTool.swift in Sources */,
