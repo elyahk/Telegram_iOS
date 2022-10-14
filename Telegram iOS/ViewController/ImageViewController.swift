@@ -17,6 +17,7 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
     private lazy var topToolbar: TopToolbar = {
         let view = TopToolbar(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.leftButton.addTarget(self, action: #selector(touchUpInside(back:)), for: .touchUpInside)
 
         return view
     }()
@@ -24,6 +25,8 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
     private lazy var imageView: UIImageView = {
         let view = UIImageView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
 
         return view
     }()
@@ -31,7 +34,7 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
     private lazy var contentView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .clear
 
         return view
     }()
@@ -114,5 +117,9 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
         ])
 
         view.layoutIfNeeded()
+    }
+
+    @objc private func touchUpInside(back button: UIButton) {
+        self.dismiss(animated: true)
     }
 }
