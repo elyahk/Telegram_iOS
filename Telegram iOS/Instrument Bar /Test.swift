@@ -18,8 +18,8 @@ class Test: UIViewController{
     }()
     
     
-    lazy var instrumentView: InstrumentContentView = {
-        let view = InstrumentContentView()
+    lazy var instrumentView: TGDrawingTools = {
+        let view = TGDrawingTools()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
