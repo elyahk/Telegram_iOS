@@ -9,7 +9,7 @@ import UIKit
 
 class TempViewController: RootViewController {
     private(set) lazy var tempView: UIView = {
-        var view = TGDrawingTools()
+//        var view = TGDrawingTools()
         view.translatesAutoresizingMaskIntoConstraints = false
 
         return view

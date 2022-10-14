@@ -8,51 +8,52 @@
 import UIKit
 
 class InstrumentContentView: UIView{
-    
-    lazy var pencilView: PencilView = {
-        let view = PencilView(type: .pen)
+    lazy var pencilView: TGDrawingTool = {
+        let view = TGDrawingTool(type: .pen)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
-    lazy var brushView: PencilView = {
-        let view = PencilView(type: .brush)
+    lazy var brushView: TGDrawingTool = {
+        let view = TGDrawingTool(type: .brush)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
-    lazy var neonView: PencilView = {
-        let view = PencilView(type: .neon)
+    lazy var neonView: TGDrawingTool = {
+        let view = TGDrawingTool(type: .neon)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
-    lazy var pencil2View: PencilView = {
-        let view = PencilView(type: .pencil)
+    lazy var pencil2View: TGDrawingTool = {
+        let view = TGDrawingTool(type: .pencil)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
-    lazy var lassoView: PencilView = {
-        let view = PencilView(type: .lasso)
+    lazy var lassoView: TGDrawingTool = {
+        let view = TGDrawingTool(type: .lasso)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
-    lazy var eraserView: PencilView = {
-        let view = PencilView(type: .eraser)
+    lazy var eraserView: TGDrawingTool = {
+        let view = TGDrawingTool(type: .eraser)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
     lazy var contentStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [pencilView,brushView,neonView,pencil2View,lassoView,eraserView])
+        let stack = UIStackView(arrangedSubviews: [
+            pencilView, brushView, neonView, pencil2View, lassoView, eraserView
+        ])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.distribution = .fillEqually
