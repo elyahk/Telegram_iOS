@@ -12,7 +12,7 @@ class NeonView: UIView{
     lazy var pencilImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.image = UIImage(named: "neon")
         
         return image
@@ -21,7 +21,7 @@ class NeonView: UIView{
     lazy var tipImageView: UIImageView = {
         let view = UIImageView()
         view.image = Images.neon_tip.image
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
         view.translatesAutoresizingMaskIntoConstraints = false
 //        view.clipsToBounds = true
 //        view.backgroundColor = UIColor.green

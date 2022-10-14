@@ -12,7 +12,7 @@ class PencilView: UIView{
     lazy var pencilImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.image = UIImage(named: "pencil")
         
         return image
@@ -22,7 +22,7 @@ class PencilView: UIView{
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.image = Images.pencil_tip.image
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
         
         return view
     }()
@@ -31,6 +31,8 @@ class PencilView: UIView{
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
+        view.layer.cornerRadius = 1.0
+        view.clipsToBounds = true
         
         return view
     }()
@@ -77,10 +79,10 @@ class PencilView: UIView{
             tipImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tipImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            whiteRectangleleView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 11.5),
-            whiteRectangleleView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -11.5),
-            whiteRectangleleView.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -50.0),
-            whiteRectangleleView.heightAnchor.constraint(equalToConstant: 3.0)
+            whiteRectangleleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: universalWidth(1.5)),
+            whiteRectangleleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -universalWidth(1.5)),
+            whiteRectangleleView.topAnchor.constraint(equalTo: topAnchor,constant: universalHeight(35.0)),
+            whiteRectangleleView.heightAnchor.constraint(equalToConstant: universalHeight(3.0))
             
         ])
     }

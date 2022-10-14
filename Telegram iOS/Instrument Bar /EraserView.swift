@@ -12,7 +12,7 @@ class EraserView: UIView{
     lazy var pencilImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.image = UIImage(named: "eraser")
         
         return image

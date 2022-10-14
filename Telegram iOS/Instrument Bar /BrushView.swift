@@ -12,7 +12,7 @@ class BrushView: UIView{
     lazy var pencilImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.image = UIImage(named: "brush")
         
         return image
@@ -21,7 +21,7 @@ class BrushView: UIView{
     lazy var tipImageView: UIImageView = {
         let view = UIImageView()
         view.image = Images.brush_tip.image
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view

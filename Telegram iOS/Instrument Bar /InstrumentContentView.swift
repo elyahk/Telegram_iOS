@@ -56,7 +56,7 @@ class InstrumentContentView: UIView{
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        stack.spacing = 0
+        stack.spacing = 27
         
         return stack
     }()
