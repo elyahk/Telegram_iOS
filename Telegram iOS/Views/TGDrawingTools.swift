@@ -8,24 +8,67 @@
 import UIKit
 
 class TGDrawingTools: UIView {
-    private(set) lazy var baseToolImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 83).universal())
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
-        view.contentMode = .right
-        view.contentMode = .scaleAspectFill
-        view.image = Images.toolBasePen.image
+    private(set) lazy var penTool: TGDrawingTool = {
+        let view = TGDrawingTool(frame: .init(x: 0.0, y: 0.0, width: universalWidth(17.0), height: universalHeight(93.0)))
+
+        view.baseToolImageView.image = Images.toolBasePen.image
+        view.tipToolImageView.image = Images.toolTipPen.image
 
         return view
     }()
 
-    private(set) lazy var tipToolImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 5.3, y: 0.0, width: 6.4, height: 12.5).universal())
+    private(set) lazy var brushTool: TGDrawingTool = {
+        let view = TGDrawingTool(frame: .init(x: 0.0, y: 0.0, width: universalWidth(17.0), height: universalHeight(93.0)))
+
+        view.baseToolImageView.image = Images.toolBasePen.image
+        view.tipToolImageView.image = Images.toolTipPen.image
+
+        return view
+    }()
+
+    private(set) lazy var neonTool: TGDrawingTool = {
+        let view = TGDrawingTool(frame: .init(x: 0.0, y: 0.0, width: universalWidth(17.0), height: universalHeight(93.0)))
+
+        view.baseToolImageView.image = Images.toolBasePen.image
+        view.tipToolImageView.image = Images.toolTipPen.image
+
+        return view
+    }()
+
+    private(set) lazy var pencilTool: TGDrawingTool = {
+        let view = TGDrawingTool(frame: .init(x: 0.0, y: 0.0, width: universalWidth(17.0), height: universalHeight(93.0)))
+
+        view.baseToolImageView.image = Images.toolBasePen.image
+        view.tipToolImageView.image = Images.toolTipPen.image
+
+        return view
+    }()
+
+    private(set) lazy var lassoTool: TGDrawingTool = {
+        let view = TGDrawingTool(frame: .init(x: 0.0, y: 0.0, width: universalWidth(17.0), height: universalHeight(93.0)))
+
+        view.baseToolImageView.image = Images.toolBasePen.image
+        view.tipToolImageView.image = Images.toolTipPen.image
+
+        return view
+    }()
+
+    private(set) lazy var eraserTool: TGDrawingTool = {
+        let view = TGDrawingTool(frame: .init(x: 0.0, y: 0.0, width: universalWidth(17.0), height: universalHeight(93.0)))
+
+        view.baseToolImageView.image = Images.toolBasePen.image
+        view.tipToolImageView.image = Images.toolTipPen.image
+
+        return view
+    }()
+
+    private(set) lazy var toolsStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [penTool, brushTool, neonTool, pencilTool, lassoTool, eraserTool])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
-        view.contentMode = .right
-        view.image = Images.toolTipPen.image
-        view.contentMode = .scaleAspectFill
+        view.distribution = .fillEqually
+        view.axis = .horizontal
+        view.spacing = universalWidth(27.0)
 
         return view
     }()
@@ -41,8 +84,14 @@ class TGDrawingTools: UIView {
     }
 
     private func setupSubviews() {
-        self.addSubview(baseToolImageView)
-        self.addSubview(tipToolImageView)
+        self.addSubview(toolsStackView)
+
+        NSLayoutConstraint.activate([
+            toolsStackView.topAnchor.constraint(equalTo: self.topAnchor),
+            toolsStackView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            toolsStackView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            toolsStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
 
         self.layoutIfNeeded()
     }

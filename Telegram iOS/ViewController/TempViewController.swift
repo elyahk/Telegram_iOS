@@ -9,7 +9,7 @@ import UIKit
 
 class TempViewController: RootViewController {
     private(set) lazy var tempView: UIView = {
-        var view = TGDrawingTool(frame: .init(x: 200, y: 200, width: 17, height: 83))
+        var view = TGDrawingTools()
         view.translatesAutoresizingMaskIntoConstraints = false
 
         return view
@@ -23,6 +23,10 @@ class TempViewController: RootViewController {
 
     private func setupSubviews(){
         view.addSubview(tempView)
-        view.layoutIfNeeded()
+
+        NSLayoutConstraint.activate([
+            tempView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            tempView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 }

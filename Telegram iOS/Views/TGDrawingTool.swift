@@ -9,23 +9,19 @@ import UIKit
 
 class TGDrawingTool: UIView {
     private(set) lazy var baseToolImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 83).universal())
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 93).universal())
         view.backgroundColor = .clear
-        view.contentMode = .right
-        view.contentMode = .scaleAspectFill
+        view.contentMode = .scaleToFill
         view.image = Images.toolBasePen.image
 
         return view
     }()
 
     private(set) lazy var tipToolImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 5.3, y: 0.0, width: 6.4, height: 12.5).universal())
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 12.5).universal())
         view.backgroundColor = .clear
-        view.contentMode = .right
-        view.image = Images.toolTipPen.image
-        view.contentMode = .scaleAspectFill
+        view.contentMode = .scaleToFill
+        view.image = Images.undo.image
 
         return view
     }()
