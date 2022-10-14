@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0F99EA9A28F6FF1200C4524F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0F99EA9928F6FF1200C4524F /* Lottie */; };
+		0FA9A17228F9B10800652E47 /* PencilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9A17128F9B10800652E47 /* PencilView.swift */; };
+		0FA9A17428F9B3A700652E47 /* BrushView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9A17328F9B3A700652E47 /* BrushView.swift */; };
+		0FA9A17628F9B4E300652E47 /* NeonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9A17528F9B4E300652E47 /* NeonView.swift */; };
+		0FA9A17828F9B53D00652E47 /* LassoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9A17728F9B53D00652E47 /* LassoView.swift */; };
+		0FA9A17A28F9B58800652E47 /* EraserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9A17928F9B58800652E47 /* EraserView.swift */; };
+		0FA9A17C28F9B5EE00652E47 /* InstrumentContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9A17B28F9B5EE00652E47 /* InstrumentContentView.swift */; };
+		0FA9A17E28F9B81E00652E47 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA9A17D28F9B81E00652E47 /* Test.swift */; };
 		0FBD9C4B28F6D30F003A2A64 /* AllowScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD9C4A28F6D30F003A2A64 /* AllowScreenViewController.swift */; };
 		6E1FE0D028F6B5BA00DC4C2D /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1FE0CF28F6B5BA00DC4C2D /* ImageViewController.swift */; };
 		6E55798F28F5EF17005B7C65 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E55798E28F5EF17005B7C65 /* CustomViewController.swift */; };
@@ -48,6 +55,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FA9A17128F9B10800652E47 /* PencilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilView.swift; sourceTree = "<group>"; };
+		0FA9A17328F9B3A700652E47 /* BrushView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushView.swift; sourceTree = "<group>"; };
+		0FA9A17528F9B4E300652E47 /* NeonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeonView.swift; sourceTree = "<group>"; };
+		0FA9A17728F9B53D00652E47 /* LassoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LassoView.swift; sourceTree = "<group>"; };
+		0FA9A17928F9B58800652E47 /* EraserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraserView.swift; sourceTree = "<group>"; };
+		0FA9A17B28F9B5EE00652E47 /* InstrumentContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentContentView.swift; sourceTree = "<group>"; };
+		0FA9A17D28F9B81E00652E47 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		0FBD9C4A28F6D30F003A2A64 /* AllowScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowScreenViewController.swift; sourceTree = "<group>"; };
 		6E1FE0CF28F6B5BA00DC4C2D /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		6E55798E28F5EF17005B7C65 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +113,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FA9A17028F9AFD300652E47 /* Instrument Bar  */ = {
+			isa = PBXGroup;
+			children = (
+				0FA9A17128F9B10800652E47 /* PencilView.swift */,
+				0FA9A17328F9B3A700652E47 /* BrushView.swift */,
+				0FA9A17528F9B4E300652E47 /* NeonView.swift */,
+				0FA9A17728F9B53D00652E47 /* LassoView.swift */,
+				0FA9A17928F9B58800652E47 /* EraserView.swift */,
+				0FA9A17B28F9B5EE00652E47 /* InstrumentContentView.swift */,
+				0FA9A17D28F9B81E00652E47 /* Test.swift */,
+			);
+			path = "Instrument Bar ";
+			sourceTree = "<group>";
+		};
 		6E55798D28F5EEFE005B7C65 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +187,7 @@
 		6E5F5F4728F4988900FDBDE7 /* Telegram iOS */ = {
 			isa = PBXGroup;
 			children = (
+				0FA9A17028F9AFD300652E47 /* Instrument Bar  */,
 				6EE8CA1828F77033007D6C94 /* Views */,
 				6EE8CA1028F758A7007D6C94 /* CompositionController */,
 				6EE8CA0C28F75113007D6C94 /* Extra Resources */,
@@ -370,20 +399,27 @@
 				6E5F5F4928F4988900FDBDE7 /* AppDelegate.swift in Sources */,
 				6E55799528F5F6DB005B7C65 /* UIImageView+ImageAsset.swift in Sources */,
 				6EE8CA0F28F753C3007D6C94 /* AssertPhotosAccessManager.swift in Sources */,
+				0FA9A17C28F9B5EE00652E47 /* InstrumentContentView.swift in Sources */,
 				6EE8CA1C28F7706F007D6C94 /* ImageCollectionViewCell.swift in Sources */,
+				0FA9A17628F9B4E300652E47 /* NeonView.swift in Sources */,
 				6EE8CA1528F75A60007D6C94 /* RootViewController.swift in Sources */,
 				6EE8CA1A28F77040007D6C94 /* TopToolbar.swift in Sources */,
+				0FA9A17228F9B10800652E47 /* PencilView.swift in Sources */,
 				6E1FE0D028F6B5BA00DC4C2D /* ImageViewController.swift in Sources */,
 				6E5D090A28F961C600905288 /* TGDrawingTools.swift in Sources */,
 				6EE8CA0A28F74D8D007D6C94 /* Shimmer.swift in Sources */,
 				0FBD9C4B28F6D30F003A2A64 /* AllowScreenViewController.swift in Sources */,
 				6E5D090D28F9621500905288 /* UIWindow + Size.swift in Sources */,
+				0FA9A17828F9B53D00652E47 /* LassoView.swift in Sources */,
 				6E6D810928F89CEA00C574F7 /* TGDrawingTool.swift in Sources */,
 				6EE8CA1228F758BF007D6C94 /* MainCompositionController.swift in Sources */,
 				6EE8CA0828F74D8D007D6C94 /* ShimmeringView.swift in Sources */,
+				0FA9A17E28F9B81E00652E47 /* Test.swift in Sources */,
+				0FA9A17428F9B3A700652E47 /* BrushView.swift in Sources */,
 				6E6D810B28F89F5800C574F7 /* TempViewController.swift in Sources */,
 				6E55799128F5F102005B7C65 /* ImagesCollectionViewController.swift in Sources */,
 				6EE8CA0B28F74D8D007D6C94 /* ShimmeringMaskLayer.swift in Sources */,
+				0FA9A17A28F9B58800652E47 /* EraserView.swift in Sources */,
 				6E55798F28F5EF17005B7C65 /* CustomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
