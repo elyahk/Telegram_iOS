@@ -61,6 +61,13 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
         return view
     }()
 
+    lazy var instrumentView: TGDrawingTools = {
+        let view = TGDrawingTools()
+        view.translatesAutoresizingMaskIntoConstraints = false
+
+        return view
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -75,20 +82,20 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
     private func setupSubviews() {
         view.addSubview(topToolbar)
         view.addSubview(contentView)
+        view.addSubview(instrumentView)
         contentView.addSubview(imageView)
         contentView.addSubview(pkCanvasView)
-
 
         NSLayoutConstraint.activate([
             topToolbar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             topToolbar.leftAnchor.constraint(equalTo: view.leftAnchor),
             topToolbar.rightAnchor.constraint(equalTo: view.rightAnchor),
-            topToolbar.heightAnchor.constraint(equalToConstant: 44.0),
-            topToolbar.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: -31.0),
+            topToolbar.heightAnchor.constraint(equalToConstant: universalHeight(44.0)),
+            topToolbar.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: -universalHeight(31.0)),
 
             contentView.leftAnchor.constraint(equalTo: view.leftAnchor),
             contentView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100.0),
+            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -universalHeight(196.0)),
 
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
@@ -98,7 +105,12 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
             pkCanvasView.topAnchor.constraint(equalTo: contentView.topAnchor),
             pkCanvasView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             pkCanvasView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            pkCanvasView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            pkCanvasView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
+            instrumentView.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: universalHeight(53.0)),
+            instrumentView.widthAnchor.constraint(equalToConstant: universalWidth(240.0)),
+            instrumentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            instrumentView.heightAnchor.constraint(equalToConstant: universalHeight(93.0))
         ])
 
         view.layoutIfNeeded()
