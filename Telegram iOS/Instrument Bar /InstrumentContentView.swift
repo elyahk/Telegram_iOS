@@ -10,42 +10,42 @@ import UIKit
 class InstrumentContentView: UIView{
     
     lazy var pencilView: PencilView = {
-        let view = PencilView()
+        let view = PencilView(type: .pen)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
-    lazy var brushView: BrushView = {
-        let view = BrushView()
+    lazy var brushView: PencilView = {
+        let view = PencilView(type: .brush)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
-    lazy var neonView: NeonView = {
-        let view = NeonView()
+    lazy var neonView: PencilView = {
+        let view = PencilView(type: .neon)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
     lazy var pencil2View: PencilView = {
-        let view = PencilView()
+        let view = PencilView(type: .pencil)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
-    lazy var lassoView: LassoView = {
-        let view = LassoView()
+    lazy var lassoView: PencilView = {
+        let view = PencilView(type: .lasso)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
-    lazy var eraserView: EraserView = {
-        let view = EraserView()
+    lazy var eraserView: PencilView = {
+        let view = PencilView(type: .eraser)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view

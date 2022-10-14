@@ -7,13 +7,59 @@
 
 import UIKit
 
-class PencilView: UIView{
-    
+enum ToolType {
+    case pen
+    case brush
+    case neon
+    case pencil
+    case lasso
+    case eraser
+
+    var baseImage: UIImage {
+        switch self {
+        case .pen:
+            return Images.toolBasePen.image
+        case .brush:
+            return Images.brush.image
+        case .neon:
+            return Images.neon.image
+        case .pencil:
+            return Images.pencil.image
+        case .lasso:
+            return Images.lasso.image
+        case .eraser:
+            return Images.eraser.image
+        }
+    }
+
+    var tipImage: UIImage {
+        switch self {
+        case .pen:
+            return Images.toolTipPen.image
+        case .brush:
+            return Images.brush_tip.image
+        case .neon:
+            return Images.neon_tip.image
+        case .pencil:
+            return Images.pencil_tip.image
+        case .lasso:
+            return Images.neon.image
+        case .eraser:
+            return Images.none.image
+        }
+    }
+}
+
+class PencilView: UIView {
+    public var type: ToolType {
+        didSet { updateType() }
+    }
+
     lazy var pencilImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
-        image.image = UIImage(named: "pencil")
+        image.image = type.baseImage
         
         return image
     }()
@@ -21,7 +67,7 @@ class PencilView: UIView{
     lazy var tipImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = Images.pencil_tip.image
+        view.image = type.tipImage
         view.contentMode = .scaleAspectFill
         
         return view
@@ -36,33 +82,33 @@ class PencilView: UIView{
         
         return view
     }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+
+    convenience init(type: ToolType) {
+        self.init(frame: .zero)
+
+        self.type = type
         setupSubviews()
-//        drawTriangle()
+        updateType()
+    }
+
+    override init(frame: CGRect) {
+        type = .pen
+
+        super.init(frame: frame)
+
+        setupSubviews()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    func drawTriangle(){
-//        let path = UIBezierPath()
-//
-//        path.move(to: CGPoint(x: 500, y: 80))
-//        path.addLine(to: CGPoint(x: 350, y: 300))
-//        path.addLine(to: CGPoint(x: 600, y: 300))
-//        path.close()
-//
-//        UIColor.red.setStroke()
-//        path.lineWidth = 5
-//
-//        UIColor.red.setFill()
-//        path.fill()
-//    }
-    
-    func setupSubviews(){
+
+    private func updateType() {
+        pencilImageView.image = type.baseImage
+        tipImageView.image = type.tipImage
+    }
+
+    private func setupSubviews(){
         addSubview(pencilImageView)
         addSubview(tipImageView)
         addSubview(whiteRectangleleView)
