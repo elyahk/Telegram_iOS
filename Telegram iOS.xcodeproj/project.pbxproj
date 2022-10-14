@@ -12,6 +12,7 @@
 		0FBD9C4B28F6D30F003A2A64 /* AllowScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD9C4A28F6D30F003A2A64 /* AllowScreenViewController.swift */; };
 		6E1FE0D028F6B5BA00DC4C2D /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1FE0CF28F6B5BA00DC4C2D /* ImageViewController.swift */; };
 		6E37567328F9EEC000CC8B14 /* TGDrawingToolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E37567228F9EEC000CC8B14 /* TGDrawingToolType.swift */; };
+		6E37567628FA000C00CC8B14 /* TGToolPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E37567528FA000C00CC8B14 /* TGToolPickerView.swift */; };
 		6E55798F28F5EF17005B7C65 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E55798E28F5EF17005B7C65 /* CustomViewController.swift */; };
 		6E55799128F5F102005B7C65 /* ImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E55799028F5F102005B7C65 /* ImagesCollectionViewController.swift */; };
 		6E55799528F5F6DB005B7C65 /* UIImageView+ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E55799428F5F6DB005B7C65 /* UIImageView+ImageAsset.swift */; };
@@ -54,6 +55,7 @@
 		0FBD9C4A28F6D30F003A2A64 /* AllowScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowScreenViewController.swift; sourceTree = "<group>"; };
 		6E1FE0CF28F6B5BA00DC4C2D /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		6E37567228F9EEC000CC8B14 /* TGDrawingToolType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGDrawingToolType.swift; sourceTree = "<group>"; };
+		6E37567528FA000C00CC8B14 /* TGToolPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGToolPickerView.swift; sourceTree = "<group>"; };
 		6E55798E28F5EF17005B7C65 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		6E55799028F5F102005B7C65 /* ImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewController.swift; sourceTree = "<group>"; };
 		6E55799428F5F6DB005B7C65 /* UIImageView+ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageAsset.swift"; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				6E37567428F9F03B00CC8B14 /* TGDrawingTools */,
 				6EE8CA1928F77040007D6C94 /* TopToolbar.swift */,
 				6EE8CA1D28F770B7007D6C94 /* Cell */,
+				6E37567528FA000C00CC8B14 /* TGToolPickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				6E55799528F5F6DB005B7C65 /* UIImageView+ImageAsset.swift in Sources */,
 				6EE8CA0F28F753C3007D6C94 /* AssertPhotosAccessManager.swift in Sources */,
 				6EE8CA1C28F7706F007D6C94 /* ImageCollectionViewCell.swift in Sources */,
+				6E37567628FA000C00CC8B14 /* TGToolPickerView.swift in Sources */,
 				6EE8CA1528F75A60007D6C94 /* RootViewController.swift in Sources */,
 				6EE8CA1A28F77040007D6C94 /* TopToolbar.swift in Sources */,
 				6E1FE0D028F6B5BA00DC4C2D /* ImageViewController.swift in Sources */,

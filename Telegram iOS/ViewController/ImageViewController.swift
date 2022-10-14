@@ -64,8 +64,8 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
         return view
     }()
 
-    lazy var instrumentView: TGDrawingTools = {
-        let view = TGDrawingTools()
+    lazy var tgToolPickerView: TGToolPickerView = {
+        let view = TGToolPickerView()
         view.translatesAutoresizingMaskIntoConstraints = false
 
         return view
@@ -85,7 +85,7 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
     private func setupSubviews() {
         view.addSubview(topToolbar)
         view.addSubview(contentView)
-        view.addSubview(instrumentView)
+        view.addSubview(tgToolPickerView)
         contentView.addSubview(imageView)
         contentView.addSubview(pkCanvasView)
 
@@ -110,10 +110,10 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
             pkCanvasView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             pkCanvasView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            instrumentView.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: universalHeight(53.0)),
-            instrumentView.widthAnchor.constraint(equalToConstant: universalWidth(240.0)),
-            instrumentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            instrumentView.heightAnchor.constraint(equalToConstant: universalHeight(93.0))
+            tgToolPickerView.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: universalHeight(53.0)),
+            tgToolPickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tgToolPickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tgToolPickerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
         view.layoutIfNeeded()
