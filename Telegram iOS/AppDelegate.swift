@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         window?.overrideUserInterfaceStyle = .dark
-        let compositionController = AllowScreenViewController()
-        window?.rootViewController = compositionController
+        let compositionController = MainCompositionController()
+        window?.rootViewController = TempViewController()
 
         return true
     }

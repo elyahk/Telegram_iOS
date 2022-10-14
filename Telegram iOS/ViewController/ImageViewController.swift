@@ -50,6 +50,7 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
         view.delegate = self
         view.alwaysBounceVertical = true
         view.drawing = pkDrawing
+        view.tool = PKInkingTool(PKInkingTool.InkType.pen, color: UIColor.red, width: 20.0)
 
         if #available(iOS 14.0, *) {
             view.drawingPolicy = PKCanvasViewDrawingPolicy.anyInput
@@ -65,13 +66,6 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
 
         setupSubviews()
         getPhoto()
-
-        if let window = UIApplication.shared.delegate?.window, let toolPicker = PKToolPicker.shared(for: window!) {
-            toolPicker.setVisible(true, forFirstResponder: pkCanvasView)
-            toolPicker.addObserver(pkCanvasView)
-
-            pkCanvasView.becomeFirstResponder()
-        }
     }
 
     func getPhoto() {

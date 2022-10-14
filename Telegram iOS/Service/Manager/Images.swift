@@ -10,6 +10,8 @@ import UIKit
 
 enum Images: String {
     case undo = "undo"
+    case toolBasePen = "pen_base"
+    case toolTipPen = "pen_tip"
     case none
 
     var image: UIImage {

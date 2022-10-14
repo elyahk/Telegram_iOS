@@ -55,7 +55,9 @@ class AllowScreenViewController: RootViewController {
         shimmer.backgroundColor = .white
         shimmer.layer.cornerRadius = 10.0
         shimmer.isShimmering = true
-        
+        shimmer.shimmerPauseDuration = 3.0
+        shimmer.shimmerSpeed = 450
+
         return shimmer
     }()
     
@@ -70,7 +72,6 @@ class AllowScreenViewController: RootViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
-        shimmer.shimmerSpeed = 450
     }
     
     private func setupSubviews(){
