@@ -24,12 +24,13 @@ class TGToolPickerView: UIView {
         let view = CustomSegmentedControl(items: ["Draw","Text"])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self, action: #selector(valueChanged(_:)), for: .valueChanged)
+        view.backgroundColor = .black
         view.selectedSegmentIndex = 0
-        view.backgroundColor = UIColor.black
+        view.clipsToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.75
-        view.layer.shadowOffset = CGSize(width: 0, height: 3)
-        view.layer.shadowRadius = 3.0
+        view.layer.shadowOpacity = 450
+        view.layer.shadowOffset = CGSize.zero
+        view.layer.shadowRadius = 26.0
         view.layer.isGeometryFlipped = false
 
         return view
