@@ -11,7 +11,7 @@ class TGDrawingTools: UIView {
     public var events: Events = .init()
     public var selectedType: TGDrawingToolType = .pen
 
-    lazy var pencilView: TGDrawingTool = {
+    lazy var penView: TGDrawingTool = {
         let view = TGDrawingTool(type: .pen, tipType: .colorAndHeight(color: UIColor.yellow, height: 5.0))
         view.colorRectangleHeight = 3.0
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +36,7 @@ class TGDrawingTools: UIView {
         return view
     }()
 
-    lazy var pencil2View: TGDrawingTool = {
+    lazy var pencilView: TGDrawingTool = {
         let view = TGDrawingTool(type: .pencil)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.selected = selected(selected:)
@@ -62,7 +62,7 @@ class TGDrawingTools: UIView {
 
     lazy var contentStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [
-            pencilView, brushView, neonView, pencil2View, lassoView, eraserView
+            penView, brushView, neonView, pencilView, lassoView, eraserView
         ])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
@@ -75,6 +75,7 @@ class TGDrawingTools: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()
+        animateTool(type: selectedType, isPicked: true)
     }
 
     required init?(coder: NSCoder) {
@@ -90,10 +91,41 @@ class TGDrawingTools: UIView {
             contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+        layoutIfNeeded()
     }
 
     private func selected(selected type: TGDrawingToolType) {
+        guard type != self.selectedType else { return }
+
         events.changedType(type)
+        animateTool(type: selectedType, isPicked: false)
+        animateTool(type: type, isPicked: true)
+        selectedType = type
+    }
+
+    private func animateTool(type: TGDrawingToolType, isPicked: Bool) {
+        let toolView = getToolView(type: type)
+
+        UIView.animate(withDuration: 0.2, delay: 0.0) { [weak toolView] in
+            toolView?.transform = isPicked ? CGAffineTransform(translationX: 0.0, y: -15) : .identity
+        }
+    }
+
+    private func getToolView(type: TGDrawingToolType) -> UIView {
+        switch type {
+        case .pen:
+            return penView
+        case .brush:
+            return brushView
+        case .neon:
+            return neonView
+        case .pencil:
+            return pencilView
+        case .lasso:
+            return lassoView
+        case .eraser:
+            return eraserView
+        }
     }
 }
 

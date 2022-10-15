@@ -47,6 +47,7 @@ enum Images: String {
     case brush_tip
     case neon_tip
     case pencil_tip
+    case sample_image
     
     case none
 

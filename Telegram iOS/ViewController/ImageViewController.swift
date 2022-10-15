@@ -14,6 +14,8 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
         didSet { getPhoto() }
     }
 
+    public var image: UIImage = Images.sample_image.image
+
     private lazy var topToolbar: TopToolbar = {
         let view = TopToolbar(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -27,6 +29,7 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
         view.backgroundColor = .clear
+        view.image = image
 
         return view
     }()
@@ -78,7 +81,7 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
         super.viewDidLoad()
 
         setupSubviews()
-        getPhoto()
+//        getPhoto()
     }
 
     func getPhoto() {
