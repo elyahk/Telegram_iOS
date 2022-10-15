@@ -8,10 +8,14 @@
 import UIKit
 
 class TGDrawingTools: UIView {
+    public var events: Events = .init()
+    public var selectedType: TGDrawingToolType = .pen
+
     lazy var pencilView: TGDrawingTool = {
         let view = TGDrawingTool(type: .pen, tipType: .colorAndHeight(color: UIColor.yellow, height: 5.0))
         view.colorRectangleHeight = 3.0
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.selected = selected(selected:)
 
         return view
     }()
@@ -19,6 +23,7 @@ class TGDrawingTools: UIView {
     lazy var brushView: TGDrawingTool = {
         let view = TGDrawingTool(type: .brush)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.selected = selected(selected:)
 
         return view
     }()
@@ -26,6 +31,7 @@ class TGDrawingTools: UIView {
     lazy var neonView: TGDrawingTool = {
         let view = TGDrawingTool(type: .neon)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.selected = selected(selected:)
 
         return view
     }()
@@ -33,6 +39,7 @@ class TGDrawingTools: UIView {
     lazy var pencil2View: TGDrawingTool = {
         let view = TGDrawingTool(type: .pencil)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.selected = selected(selected:)
 
         return view
     }()
@@ -40,6 +47,7 @@ class TGDrawingTools: UIView {
     lazy var lassoView: TGDrawingTool = {
         let view = TGDrawingTool(type: .lasso)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.selected = selected(selected:)
 
         return view
     }()
@@ -47,6 +55,7 @@ class TGDrawingTools: UIView {
     lazy var eraserView: TGDrawingTool = {
         let view = TGDrawingTool(type: .eraser)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.selected = selected(selected:)
 
         return view
     }()
@@ -81,6 +90,17 @@ class TGDrawingTools: UIView {
             contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+    }
+
+    private func selected(selected type: TGDrawingToolType) {
+        events.changedType(type)
+    }
+}
+
+extension TGDrawingTools {
+    public struct Events {
+        var changedType: ((TGDrawingToolType) -> Void) = { _ in }
+
     }
 }
 

@@ -67,6 +67,9 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
     lazy var tgToolPickerView: TGToolPickerView = {
         let view = TGToolPickerView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.events.toolTypeChanged = { [weak self] type in
+            self?.changed(tool: type)
+        }
 
         return view
     }()
@@ -121,5 +124,22 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
 
     @objc private func touchUpInside(back button: UIButton) {
         self.dismiss(animated: true)
+    }
+
+    private func changed(tool type: TGDrawingToolType) {
+        switch type {
+        case .pen:
+            pkCanvasView.tool = PKInkingTool(PKInkingTool.InkType.pen, color: UIColor.red, width: 5.0)
+        case .brush:
+            pkCanvasView.tool = PKInkingTool(PKInkingTool.InkType.marker, color: UIColor.red, width: 5.0)
+        case .neon:
+            pkCanvasView.tool = PKInkingTool(PKInkingTool.InkType.marker, color: UIColor.red, width: 5.0)
+        case .pencil:
+            pkCanvasView.tool = PKInkingTool(PKInkingTool.InkType.pencil, color: UIColor.red, width: 5.0)
+        case .lasso:
+            pkCanvasView.tool = PKLassoTool()
+        case .eraser:
+            pkCanvasView.tool = PKEraserTool(.vector)
+        }
     }
 }

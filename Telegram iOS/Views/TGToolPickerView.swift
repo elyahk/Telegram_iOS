@@ -8,9 +8,14 @@
 import UIKit
 
 class TGToolPickerView: UIView {
+    public var events: Events = .init()
+
     lazy var drawingTool: TGDrawingTools = {
         let view = TGDrawingTools()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.events.changedType = { [weak self] type in
+            self?.events.toolTypeChanged(type)
+        }
 
         return view
     }()
@@ -116,3 +121,10 @@ class TGToolPickerView: UIView {
     }
 }
 
+// MARK: - Events
+
+extension TGToolPickerView {
+    public struct Events {
+        var toolTypeChanged: ((TGDrawingToolType) -> Void) = { _ in }
+    }
+}

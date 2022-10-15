@@ -8,6 +8,7 @@
 import UIKit
 
 class TGDrawingTool: UIView {
+    public var selected: ((TGDrawingToolType) -> Void) = { _ in }
     public var colorRectangleHeight: CGFloat = 1.0 {
         didSet {
             colorRectangleleViewHeightAnchor.constant = colorRectangleHeight
@@ -53,6 +54,15 @@ class TGDrawingTool: UIView {
         return view
     }()
 
+    lazy var selectionButton: UIButton = {
+        let view = UIButton()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        view.addTarget(self, action: #selector(touchUpInside(button:)), for: .touchUpInside)
+
+        return view
+    }()
+
     convenience init(type: TGDrawingToolType, tipType: TGDrawingTipToolType = .none) {
         self.init(frame: .zero)
 
@@ -85,6 +95,7 @@ class TGDrawingTool: UIView {
         addSubview(baseImageView)
         addSubview(tipImageView)
         addSubview(colorRectangleleView)
+        addSubview(selectionButton)
 
         NSLayoutConstraint.activate([
             baseImageView.topAnchor.constraint(equalTo: topAnchor),
@@ -100,8 +111,17 @@ class TGDrawingTool: UIView {
             colorRectangleleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: universalWidth(1.5)),
             colorRectangleleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -universalWidth(1.5)),
             colorRectangleleView.topAnchor.constraint(equalTo: topAnchor,constant: universalHeight(38.0)),
-            colorRectangleleViewHeightAnchor
+            colorRectangleleViewHeightAnchor,
+
+            selectionButton.topAnchor.constraint(equalTo: topAnchor),
+            selectionButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            selectionButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            selectionButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+
+    @objc private func touchUpInside(button: UIButton) {
+        selected(type)
     }
 }
 
