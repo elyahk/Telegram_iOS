@@ -90,23 +90,23 @@ class TGToolPickerView: UIView {
             cancelButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8.0),
             cancelButton.trailingAnchor.constraint(equalTo: segmentControl.leadingAnchor, constant: universalWidth(-16.0)),
             cancelButton.centerYAnchor.constraint(equalTo: segmentControl.centerYAnchor),
-            cancelButton.heightAnchor.constraint(equalToConstant: universalHeight(30.0)),
+            cancelButton.heightAnchor.constraint(equalToConstant: universalWidth(30.0)),
             cancelButton.widthAnchor.constraint(equalToConstant: universalWidth(30.0)),
 
             colorPickerButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8.0),
             colorPickerButton.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: universalHeight(-17.5)),
-            colorPickerButton.heightAnchor.constraint(equalToConstant: universalHeight(30.0)),
+            colorPickerButton.heightAnchor.constraint(equalToConstant: universalWidth(30.0)),
             colorPickerButton.widthAnchor.constraint(equalToConstant: universalWidth(30.0)),
 
             downloadButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8.0),
             downloadButton.centerYAnchor.constraint(equalTo: segmentControl.centerYAnchor),
-            downloadButton.heightAnchor.constraint(equalToConstant: universalHeight(30.0)),
+            downloadButton.heightAnchor.constraint(equalToConstant: universalWidth(30.0)),
             downloadButton.widthAnchor.constraint(equalToConstant: universalWidth(30.0)),
             downloadButton.leadingAnchor.constraint(equalTo: segmentControl.trailingAnchor, constant: universalWidth(16.0)),
 
             addButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8.0),
             addButton.bottomAnchor.constraint(equalTo: downloadButton.topAnchor, constant: universalHeight(-17.5)),
-            addButton.heightAnchor.constraint(equalToConstant: universalHeight(30.0)),
+            addButton.heightAnchor.constraint(equalToConstant: universalWidth(30.0)),
             addButton.widthAnchor.constraint(equalToConstant: universalWidth(30.0)),
         ])
     }

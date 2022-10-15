@@ -9,7 +9,8 @@ import UIKit
 
 class TGDrawingTools: UIView {
     lazy var pencilView: TGDrawingTool = {
-        let view = TGDrawingTool(type: .pen)
+        let view = TGDrawingTool(type: .pen, tipType: .colorAndHeight(color: UIColor.yellow, height: 5.0))
+        view.colorRectangleHeight = 3.0
         view.translatesAutoresizingMaskIntoConstraints = false
 
         return view

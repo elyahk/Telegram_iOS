@@ -7,12 +7,51 @@
 
 import UIKit
 
+enum TGDrawingTipToolType {
+    case none
+    case colorAndHeight(color: UIColor, height: CGFloat)
+    case color(color: UIColor)
+
+    var color: UIColor {
+        switch self {
+        case .none:
+            return UIColor.clear
+        case let .colorAndHeight(color, _):
+            return color
+        case let .color(color):
+            return color
+        }
+    }
+
+    var height: CGFloat {
+        switch self {
+        case .colorAndHeight(_, let height):
+            return height
+        case .none, .color:
+            return 0.0
+        }
+    }
+}
+
 class TGDrawingTool: UIView {
+    public var colorRectangleHeight: CGFloat = 1.0 {
+        didSet {
+            colorRectangleleViewHeightAnchor.constant = colorRectangleHeight
+            colorRectangleleViewHeightAnchor.isActive = true
+        }
+    }
+
+    private lazy var colorRectangleleViewHeightAnchor = colorRectangleleView.heightAnchor.constraint(equalToConstant: universalHeight(1.0))
+
+    public var tipType: TGDrawingTipToolType {
+        didSet { updateType() }
+    }
+
     public var type: TGDrawingToolType {
         didSet { updateType() }
     }
 
-    lazy var pencilImageView: UIImageView = {
+    lazy var baseImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
@@ -30,27 +69,28 @@ class TGDrawingTool: UIView {
         return view
     }()
 
-    lazy var whiteRectangleleView: UIView = {
+    lazy var colorRectangleleView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         view.layer.cornerRadius = 1.0
         view.clipsToBounds = true
 
         return view
     }()
 
-    convenience init(type: TGDrawingToolType) {
+    convenience init(type: TGDrawingToolType, tipType: TGDrawingTipToolType = .none) {
         self.init(frame: .zero)
 
         self.type = type
+        self.tipType = tipType
         setupSubviews()
         updateType()
     }
 
     override init(frame: CGRect) {
         type = .pen
-
+        tipType = .none
         super.init(frame: frame)
 
         setupSubviews()
@@ -61,32 +101,32 @@ class TGDrawingTool: UIView {
     }
 
     private func updateType() {
-        pencilImageView.image = type.baseImage
+        baseImageView.image = type.baseImage
         tipImageView.image = type.tipImage
+        colorRectangleHeight = tipType.height
+        colorRectangleleView.backgroundColor = tipType.color
     }
 
     private func setupSubviews(){
-        addSubview(pencilImageView)
+        addSubview(baseImageView)
         addSubview(tipImageView)
-        addSubview(whiteRectangleleView)
-
+        addSubview(colorRectangleleView)
 
         NSLayoutConstraint.activate([
-            pencilImageView.topAnchor.constraint(equalTo: topAnchor),
-            pencilImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            pencilImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            pencilImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            baseImageView.topAnchor.constraint(equalTo: topAnchor),
+            baseImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            baseImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            baseImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             tipImageView.topAnchor.constraint(equalTo: topAnchor),
             tipImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tipImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tipImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            whiteRectangleleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: universalWidth(1.5)),
-            whiteRectangleleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -universalWidth(1.5)),
-            whiteRectangleleView.topAnchor.constraint(equalTo: topAnchor,constant: universalHeight(38.0)),
-            whiteRectangleleView.heightAnchor.constraint(equalToConstant: universalHeight(3.0))
-
+            colorRectangleleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: universalWidth(1.5)),
+            colorRectangleleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -universalWidth(1.5)),
+            colorRectangleleView.topAnchor.constraint(equalTo: topAnchor,constant: universalHeight(38.0)),
+            colorRectangleleViewHeightAnchor
         ])
     }
 }
