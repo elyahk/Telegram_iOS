@@ -4,13 +4,14 @@
 //
 //  Created by eldorbek nusratov on 10/12/22.
 //
-
+import PencilKit
 import UIKit
 
 class TopToolbar: UIView {
     public var rightButtonTitle: String = "Clear All" {
         didSet {
             rightButton.setTitle(rightButtonTitle, for: .normal)
+            rightButton.titleLabel?.font = UIFont(name: "SFProText-Regular", size: 17)
         }
     }
 
@@ -51,6 +52,7 @@ class TopToolbar: UIView {
         view.backgroundColor = .clear
         view.contentMode = .right
         view.setTitle(rightButtonTitle, for: .normal)
+        view.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
         view.setImage(rightButtonImage, for: .normal)
         view.titleLabel?.font = .systemFont(ofSize: 17.0, weight: .regular)
         view.setTitleColor(.white, for: .normal)
@@ -93,6 +95,10 @@ class TopToolbar: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func rightButtonTapped(){
+        
     }
 
     private func setupSubviews() {
