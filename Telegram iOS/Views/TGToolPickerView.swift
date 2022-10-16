@@ -10,12 +10,52 @@ import UIKit
 class TGToolPickerView: UIView {
     public var events: Events = .init()
 
+    lazy var colorPickerButton: UIButton = {
+        let view = UIButton()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setImage(Images.roundTip.image, for: .normal)
+        view.layer.cornerRadius = universalWidth(15.0)
+        view.makeRectangle()
+
+        return view
+    }()
+
+    lazy var addButton: UIButton = {
+        let view = UIButton()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setImage(Images.add.image, for: .normal)
+        view.layer.cornerRadius = universalWidth(15.0)
+        view.backgroundColor = UIColor.darkGray
+        view.makeRectangle()
+
+        return view
+    }()
+
     lazy var drawingTool: TGDrawingTools = {
         let view = TGDrawingTools()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.events.changedType = { [weak self] type in
             self?.events.toolTypeChanged(type)
         }
+        view.events.showToolSlider = { [weak self] type in
+            self?.setToolSlider(for: type, isHidden: false)
+        }
+
+        return view
+    }()
+
+    lazy var bottomStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [segmentControl, downloadButton])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .horizontal
+        view.spacing = 16.0
+
+        return view
+    }()
+
+    lazy var bottomContentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
 
         return view
     }()
@@ -51,45 +91,6 @@ class TGToolPickerView: UIView {
         return view
     }()
 
-    lazy var colorPickerButton: UIButton = {
-        let view = UIButton()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.setImage(Images.roundTip.image, for: .normal)
-        view.layer.cornerRadius = universalWidth(15.0)
-        view.makeRectangle()
-
-        return view
-    }()
-
-    lazy var bottomStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [cancelButton, segmentControl, sliderToolbar, downloadButton])
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.axis = .horizontal
-        view.spacing = 16.0
-
-        return view
-    }()
-
-    lazy var topStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [colorPickerButton, drawingTool, addButton])
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.axis = .horizontal
-        view.spacing = 16.0
-
-        return view
-    }()
-
-    lazy var addButton: UIButton = {
-        let view = UIButton()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.setImage(Images.add.image, for: .normal)
-        view.layer.cornerRadius = universalWidth(15.0)
-        view.backgroundColor = UIColor.darkGray
-        view.makeRectangle()
-
-        return view
-    }()
-
     lazy var downloadButton: UIButton = {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -110,16 +111,33 @@ class TGToolPickerView: UIView {
     }
 
     func setupSubviews(){
+        bottomContentView.addSubview(sliderToolbar)
+        bottomContentView.addSubview(bottomStackView)
         addSubview(drawingTool)
         addSubview(colorPickerButton)
         addSubview(addButton)
-        addSubview(bottomStackView)
+        addSubview(cancelButton)
+        addSubview(bottomContentView)
 
         NSLayoutConstraint.activate([
-            bottomStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            bottomStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            bottomStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            bottomStackView.heightAnchor.constraint(equalToConstant: universalWidth(33.0)),
+            bottomStackView.topAnchor.constraint(equalTo: bottomContentView.topAnchor),
+            bottomStackView.leadingAnchor.constraint(equalTo: bottomContentView.leadingAnchor),
+            bottomStackView.trailingAnchor.constraint(equalTo: bottomContentView.trailingAnchor),
+            bottomStackView.bottomAnchor.constraint(equalTo: bottomContentView.bottomAnchor),
+
+            sliderToolbar.bottomAnchor.constraint(equalTo: bottomContentView.bottomAnchor),
+            sliderToolbar.leadingAnchor.constraint(equalTo: bottomContentView.leadingAnchor),
+            sliderToolbar.trailingAnchor.constraint(equalTo: bottomContentView.trailingAnchor),
+            sliderToolbar.heightAnchor.constraint(equalToConstant: universalHeight(28.0)),
+            sliderToolbar.centerYAnchor.constraint(equalTo: bottomContentView.centerYAnchor),
+
+            bottomContentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            bottomContentView.leadingAnchor.constraint(equalTo: cancelButton.trailingAnchor, constant: 16.0),
+            bottomContentView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
+            bottomContentView.heightAnchor.constraint(equalToConstant: universalWidth(33.0)),
+
+            cancelButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            cancelButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8.0),
 
             colorPickerButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8.0),
             colorPickerButton.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor, constant: universalHeight(-17.5)),
@@ -137,6 +155,12 @@ class TGToolPickerView: UIView {
     @objc private func valueChanged(_ segmentControl: UISegmentedControl) {
 
     }
+
+
+    func setToolSlider(for type: TGDrawingToolType, isHidden: Bool) {
+        sliderToolbar.isHidden = isHidden
+        bottomStackView.isHidden = !isHidden
+    }
 }
 
 // MARK: - Events
@@ -144,6 +168,7 @@ class TGToolPickerView: UIView {
 extension TGToolPickerView {
     public struct Events {
         var toolTypeChanged: ((TGDrawingToolType) -> Void) = { _ in }
+        var showToolSlider: ((TGDrawingToolType) -> Void) = { _ in }
     }
 }
 

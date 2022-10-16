@@ -74,6 +74,10 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
             self?.changed(tool: type)
         }
 
+        view.events.showToolSlider = { [weak self] type in
+            self?.changed(tool: type)
+        }
+
         return view
     }()
 
@@ -144,5 +148,9 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
         case .eraser:
             pkCanvasView.tool = PKEraserTool(.vector)
         }
+    }
+
+    private func showToolSlider(tool type: TGDrawingToolType) {
+
     }
 }

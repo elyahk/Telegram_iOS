@@ -95,7 +95,10 @@ class TGDrawingTools: UIView {
     }
 
     private func selected(selected type: TGDrawingToolType) {
-        guard type != self.selectedType else { return }
+        guard type != self.selectedType else {
+            events.showToolSlider(type)
+            return
+        }
 
         events.changedType(type)
         animateTool(type: selectedType, isPicked: false)
@@ -132,7 +135,7 @@ class TGDrawingTools: UIView {
 extension TGDrawingTools {
     public struct Events {
         var changedType: ((TGDrawingToolType) -> Void) = { _ in }
-
+        var showToolSlider: ((TGDrawingToolType) -> Void) = { _ in }
     }
 }
 
