@@ -24,6 +24,19 @@ class TGToolPickerView: UIView {
         let view = UISegmentedControl(items: ["Draw", "Text"])
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self, action: #selector(valueChanged(_:)), for: .valueChanged)
+        view.backgroundColor = UIColor.black
+        view.selectedSegmentTintColor = UIColor.gray
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 14.0
+        view.selectedSegmentIndex = 0
+
+        return view
+    }()
+
+    lazy var sliderToolbar: TGSliderToolbar = {
+        let view = TGSliderToolbar()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
 
         return view
     }()
@@ -33,6 +46,7 @@ class TGToolPickerView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.setImage(Images.cancel.image, for: .normal)
         view.layer.cornerRadius = universalWidth(15.0)
+        view.makeRectangle()
 
         return view
     }()
@@ -42,6 +56,25 @@ class TGToolPickerView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.setImage(Images.roundTip.image, for: .normal)
         view.layer.cornerRadius = universalWidth(15.0)
+        view.makeRectangle()
+
+        return view
+    }()
+
+    lazy var bottomStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [cancelButton, segmentControl, sliderToolbar, downloadButton])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .horizontal
+        view.spacing = 16.0
+
+        return view
+    }()
+
+    lazy var topStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [colorPickerButton, drawingTool, addButton])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .horizontal
+        view.spacing = 16.0
 
         return view
     }()
@@ -52,6 +85,7 @@ class TGToolPickerView: UIView {
         view.setImage(Images.add.image, for: .normal)
         view.layer.cornerRadius = universalWidth(15.0)
         view.backgroundColor = UIColor.darkGray
+        view.makeRectangle()
 
         return view
     }()
@@ -61,6 +95,7 @@ class TGToolPickerView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.setImage(Images.download.image, for: .normal)
         view.layer.cornerRadius = universalWidth(15.0)
+        view.makeRectangle()
 
         return view
     }()
@@ -76,43 +111,26 @@ class TGToolPickerView: UIView {
 
     func setupSubviews(){
         addSubview(drawingTool)
-        addSubview(segmentControl)
-        addSubview(cancelButton)
         addSubview(colorPickerButton)
         addSubview(addButton)
-        addSubview(downloadButton)
+        addSubview(bottomStackView)
 
         NSLayoutConstraint.activate([
-            drawingTool.topAnchor.constraint(equalTo: topAnchor),
+            bottomStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            bottomStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            bottomStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            bottomStackView.heightAnchor.constraint(equalToConstant: universalWidth(33.0)),
+
+            colorPickerButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8.0),
+            colorPickerButton.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor, constant: universalHeight(-17.5)),
+
             drawingTool.widthAnchor.constraint(equalToConstant: universalWidth(240.0)),
             drawingTool.centerXAnchor.constraint(equalTo: centerXAnchor),
             drawingTool.heightAnchor.constraint(equalToConstant: universalHeight(93.0)),
-
-            segmentControl.topAnchor.constraint(equalTo: drawingTool.bottomAnchor, constant: -25),
-            segmentControl.centerXAnchor.constraint(equalTo: centerXAnchor),
-            segmentControl.heightAnchor.constraint(equalToConstant: universalHeight(32.0)),
-
-            cancelButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8.0),
-            cancelButton.trailingAnchor.constraint(equalTo: segmentControl.leadingAnchor, constant: universalWidth(-16.0)),
-            cancelButton.centerYAnchor.constraint(equalTo: segmentControl.centerYAnchor),
-            cancelButton.heightAnchor.constraint(equalToConstant: universalWidth(30.0)),
-            cancelButton.widthAnchor.constraint(equalToConstant: universalWidth(30.0)),
-
-            colorPickerButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8.0),
-            colorPickerButton.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: universalHeight(-17.5)),
-            colorPickerButton.heightAnchor.constraint(equalToConstant: universalWidth(30.0)),
-            colorPickerButton.widthAnchor.constraint(equalToConstant: universalWidth(30.0)),
-
-            downloadButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8.0),
-            downloadButton.centerYAnchor.constraint(equalTo: segmentControl.centerYAnchor),
-            downloadButton.heightAnchor.constraint(equalToConstant: universalWidth(30.0)),
-            downloadButton.widthAnchor.constraint(equalToConstant: universalWidth(30.0)),
-            downloadButton.leadingAnchor.constraint(equalTo: segmentControl.trailingAnchor, constant: universalWidth(16.0)),
+            drawingTool.bottomAnchor.constraint(equalTo: bottomStackView.bottomAnchor),
 
             addButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8.0),
-            addButton.bottomAnchor.constraint(equalTo: downloadButton.topAnchor, constant: universalHeight(-17.5)),
-            addButton.heightAnchor.constraint(equalToConstant: universalWidth(30.0)),
-            addButton.widthAnchor.constraint(equalToConstant: universalWidth(30.0)),
+            addButton.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor, constant: universalHeight(-17.5))
         ])
     }
 
@@ -126,5 +144,14 @@ class TGToolPickerView: UIView {
 extension TGToolPickerView {
     public struct Events {
         var toolTypeChanged: ((TGDrawingToolType) -> Void) = { _ in }
+    }
+}
+
+// MARK: - UIButton + width and height
+
+private extension UIButton {
+    func makeRectangle(width: CGFloat = universalWidth(33.0), height: CGFloat = universalWidth(33.0)) {
+        self.heightAnchor.constraint(equalToConstant: width).isActive = true
+        self.widthAnchor.constraint(equalToConstant: height).isActive = true
     }
 }

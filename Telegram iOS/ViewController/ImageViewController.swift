@@ -119,7 +119,7 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
             tgToolPickerView.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: universalHeight(53.0)),
             tgToolPickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tgToolPickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tgToolPickerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tgToolPickerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -universalHeight(31.0))
         ])
 
         view.layoutIfNeeded()

@@ -8,8 +8,8 @@
 import UIKit
 
 class TempViewController: RootViewController {
-    private(set) lazy var tempView: TGToolSlider = {
-        let view = TGToolSlider()
+    private(set) lazy var tempView: TGSliderToolbar = {
+        let view = TGSliderToolbar()
         view.translatesAutoresizingMaskIntoConstraints = false
 
         return view
@@ -27,8 +27,8 @@ class TempViewController: RootViewController {
         NSLayoutConstraint.activate([
             tempView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tempView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            tempView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20),
-            tempView.heightAnchor.constraint(equalToConstant: 60.0),
+            tempView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            tempView.heightAnchor.constraint(equalToConstant: 24.0),
         ])
     }
 }
