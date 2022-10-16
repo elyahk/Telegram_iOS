@@ -21,12 +21,15 @@ class TGSliderToolbar: UIView {
     lazy var shapeButton: UIButton = {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.setTitle("Shape", for: .normal)
         view.contentMode = .right
-        view.setImage(Images.shapeArrow.image, for: .normal)
+        view.setTitle("Round", for: .normal)
+        view.titleLabel?.font = .systemFont(ofSize: 17.0)
+        view.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+        view.imageView?.tintColor = .white
+        view.imageView?.contentMode = .scaleAspectFit
         view.semanticContentAttribute = .forceRightToLeft
 //        view.imageEdgeInsets = .init(top: 20.0, left: 0.0, bottom: 20.0, right: 0.0)
-        view.contentEdgeInsets = .init(top: 0.0, left: 16.0, bottom: 0.0, right: 0.0)
+        view.contentEdgeInsets = .init(top: 0.0, left: 26.0, bottom: 0.0, right: 0.0)
 
         return view
     }()
