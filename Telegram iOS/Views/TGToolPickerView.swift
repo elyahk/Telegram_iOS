@@ -56,6 +56,7 @@ class TGToolPickerView: UIView {
     lazy var bottomContentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
 
         return view
     }()

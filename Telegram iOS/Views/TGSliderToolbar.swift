@@ -12,7 +12,7 @@ class TGSliderToolbar: UIView {
     public var events: Events = .init()
 
     lazy var toolSlider: TGToolSlider = {
-        let view = TGToolSlider()
+        let view = TGToolSlider(color: .red)
         view.translatesAutoresizingMaskIntoConstraints = false
 
         return view
@@ -58,6 +58,10 @@ class TGSliderToolbar: UIView {
         ])
 
         layoutIfNeeded()
+    }
+
+    public func change(color: UIColor) {
+        toolSlider.color = color
     }
 }
 
