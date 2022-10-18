@@ -9,6 +9,58 @@ import UIKit
 import PencilKit
 import Photos
 
+protocol Memento {
+    var pkDrawing: PKDrawing { get }
+    var date: Date { get }
+}
+
+class DrawingStackManager {
+    private var mementos = [Memento]()
+    private let pkCanvasView: PKCanvasView
+
+    init(_ pkCanvasView: PKCanvasView) {
+        self.pkCanvasView = pkCanvasView
+    }
+
+    func save() {
+        mementos.append(pkCanvasView.memento)
+    }
+
+    func undo() {
+        guard !mementos.isEmpty else { return }
+        pkCanvasView.restore(with: mementos.removeLast())
+    }
+
+    func clear() {
+        pkCanvasView.drawing = PKDrawing()
+        mementos = []
+    }
+}
+
+
+extension PKCanvasView {
+    var memento: Memento {
+        let drawing = drawing
+        return PKCanvasViewMemento(pkDrawing: drawing)
+    }
+
+    func restore(with memento: Memento) {
+        guard let pkCanvasViewMemento = memento as? PKCanvasViewMemento else { return }
+
+        drawing = pkCanvasViewMemento.pkDrawing
+    }
+
+    struct PKCanvasViewMemento: Memento {
+        let pkDrawing: PKDrawing
+        let date = Date()
+    }
+}
+
+enum DrawingState {
+    case start
+    case stop
+}
+
 class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPickerObserver {
     public var asset: PHAsset = PHAsset() {
         didSet { getPhoto() }
@@ -16,10 +68,19 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
 
     public var image: UIImage = Images.sample_image.image
 
+    private var drawingState: DrawingState = .stop
+
+    private lazy var drawingStackManager: DrawingStackManager = {
+        let drawingStackManager = DrawingStackManager(pkCanvasView)
+
+        return drawingStackManager
+    }()
+
     private lazy var topToolbar: TopToolbar = {
         let view = TopToolbar(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.leftButton.addTarget(self, action: #selector(touchUpInside(back:)), for: .touchUpInside)
+        view.rightButton.addTarget(self, action: #selector(touchUpInside(clearAll:)), for: .touchUpInside)
 
         return view
     }()
@@ -130,7 +191,11 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
     }
 
     @objc private func touchUpInside(back button: UIButton) {
-        self.dismiss(animated: true)
+        drawingStackManager.undo()
+    }
+
+    @objc private func touchUpInside(clearAll button: UIButton) {
+        drawingStackManager.clear()
     }
 
     private func changed(tool type: TGDrawingToolType) {
@@ -152,5 +217,9 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
 
     private func showToolSlider(tool type: TGDrawingToolType) {
 
+    }
+
+    func canvasViewDidEndUsingTool(_ canvasView: PKCanvasView) {
+        drawingStackManager.save()
     }
 }
