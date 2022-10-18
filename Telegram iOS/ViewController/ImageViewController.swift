@@ -9,66 +9,10 @@ import UIKit
 import PencilKit
 import Photos
 
-protocol Memento {
-    var pkDrawing: PKDrawing { get }
-    var date: Date { get }
-}
-
-class DrawingStackManager {
-    private var mementos = [Memento]()
-    private let pkCanvasView: PKCanvasView
-
-    init(_ pkCanvasView: PKCanvasView) {
-        self.pkCanvasView = pkCanvasView
-    }
-
-    func save() {
-        mementos.append(pkCanvasView.memento)
-    }
-
-    func undo() {
-        guard !mementos.isEmpty else { return }
-        pkCanvasView.restore(with: mementos.removeLast())
-    }
-
-    func clear() {
-        pkCanvasView.drawing = PKDrawing()
-        mementos = []
-    }
-}
-
-
-extension PKCanvasView {
-    var memento: Memento {
-        let drawing = drawing
-        return PKCanvasViewMemento(pkDrawing: drawing)
-    }
-
-    func restore(with memento: Memento) {
-        guard let pkCanvasViewMemento = memento as? PKCanvasViewMemento else { return }
-
-        drawing = pkCanvasViewMemento.pkDrawing
-    }
-
-    struct PKCanvasViewMemento: Memento {
-        let pkDrawing: PKDrawing
-        let date = Date()
-    }
-}
-
-enum DrawingState {
-    case start
-    case stop
-}
-
-class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPickerObserver {
-    public var asset: PHAsset = PHAsset() {
-        didSet { getPhoto() }
-    }
+class ImageViewController: RootViewController, PKToolPickerObserver {
+    public var asset: PHAsset = PHAsset()
 
     public var image: UIImage = Images.sample_image.image
-
-    private var drawingState: DrawingState = .stop
 
     private lazy var drawingStackManager: DrawingStackManager = {
         let drawingStackManager = DrawingStackManager(pkCanvasView)
@@ -146,11 +90,6 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
         super.viewDidLoad()
 
         setupSubviews()
-//        getPhoto()
-    }
-
-    func getPhoto() {
-        imageView.fetchImageAsset(asset, targetSize: view.bounds.size, completionHandler: nil)
     }
 
     private func setupSubviews() {
@@ -189,7 +128,11 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
 
         view.layoutIfNeeded()
     }
+}
 
+// MARK: - Actions
+
+extension ImageViewController {
     @objc private func touchUpInside(back button: UIButton) {
         drawingStackManager.undo()
     }
@@ -198,6 +141,14 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
         drawingStackManager.clear()
     }
 
+    private func showToolSlider(tool type: TGDrawingToolType) {
+
+    }
+}
+
+// MARK: - Functions
+
+extension ImageViewController {
     private func changed(tool type: TGDrawingToolType) {
         switch type {
         case .pen:
@@ -214,11 +165,11 @@ class ImageViewController: RootViewController, PKCanvasViewDelegate, PKToolPicke
             pkCanvasView.tool = PKEraserTool(.vector)
         }
     }
+}
 
-    private func showToolSlider(tool type: TGDrawingToolType) {
+// MARK: - PKCanvasViewDelegate
 
-    }
-
+extension ImageViewController: PKCanvasViewDelegate {
     func canvasViewDidEndUsingTool(_ canvasView: PKCanvasView) {
         drawingStackManager.save()
     }
