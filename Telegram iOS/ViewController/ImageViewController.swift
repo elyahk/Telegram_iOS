@@ -25,6 +25,7 @@ class ImageViewController: RootViewController, PKToolPickerObserver {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.leftButton.addTarget(self, action: #selector(touchUpInside(back:)), for: .touchUpInside)
         view.rightButton.addTarget(self, action: #selector(touchUpInside(clearAll:)), for: .touchUpInside)
+        view.makeButtons(enable: false)
 
         return view
     }()
@@ -135,10 +136,12 @@ class ImageViewController: RootViewController, PKToolPickerObserver {
 extension ImageViewController {
     @objc private func touchUpInside(back button: UIButton) {
         drawingStackManager.undo()
+        topToolbar.makeButtons(enable: !drawingStackManager.mementos.isEmpty)
     }
 
     @objc private func touchUpInside(clearAll button: UIButton) {
         drawingStackManager.clear()
+        topToolbar.makeButtons(enable: false)
     }
 
     private func showToolSlider(tool type: TGDrawingToolType) {
@@ -172,5 +175,6 @@ extension ImageViewController {
 extension ImageViewController: PKCanvasViewDelegate {
     func canvasViewDidEndUsingTool(_ canvasView: PKCanvasView) {
         drawingStackManager.save()
+        topToolbar.makeButtons(enable: !drawingStackManager.mementos.isEmpty)
     }
 }

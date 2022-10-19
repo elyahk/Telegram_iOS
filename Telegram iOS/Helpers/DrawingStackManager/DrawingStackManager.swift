@@ -8,7 +8,7 @@
 import PencilKit
 
 class DrawingStackManager {
-    private var mementos = [DrawingMemento]()
+    private(set) var mementos = [DrawingMemento]()
     private let pkCanvasView: PKCanvasView
 
     init(_ pkCanvasView: PKCanvasView) {

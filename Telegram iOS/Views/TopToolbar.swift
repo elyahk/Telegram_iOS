@@ -117,5 +117,9 @@ class TopToolbar: UIView {
 
         self.layoutIfNeeded()
     }
-}
 
+    public func makeButtons(enable: Bool) {
+        leftButton.isEnabled = enable
+        rightButton.isEnabled = enable
+    }
+}
