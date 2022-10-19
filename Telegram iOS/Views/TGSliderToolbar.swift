@@ -14,6 +14,10 @@ class TGSliderToolbar: UIView {
     lazy var toolSlider: TGToolSlider = {
         let view = TGToolSlider(color: .red)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        view.minimumValue = 1.0
+        view.maximumValue = 25.0
+        view.isContinuous = false
 
         return view
     }()
@@ -72,6 +76,10 @@ class TGSliderToolbar: UIView {
 
 extension TGSliderToolbar {
     public struct Events {
-        var toolTypeChanged: ((TGDrawingToolType) -> Void) = { _ in }
+        var sliderValueChanged: ((CGFloat) -> Void) = { _ in }
+    }
+
+    @objc private func sliderValueChanged(_ slider: UISlider) {
+        events.sliderValueChanged(CGFloat(slider.value))
     }
 }

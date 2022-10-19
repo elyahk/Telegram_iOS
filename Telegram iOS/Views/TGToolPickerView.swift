@@ -10,6 +10,14 @@ import UIKit
 class TGToolPickerView: UIView {
     public var events: Events = .init()
 
+    private var currentToolState: TGToolState {
+        TGToolState(type: currentType, color: currentColor, width: currentWidth)
+    }
+
+    private lazy var currentColor: UIColor = .white
+    private lazy var currentWidth: CGFloat = 1.0
+    private lazy var currentType: TGDrawingToolType = .pen
+
     lazy var colorPickerButton: UIButton = {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +43,9 @@ class TGToolPickerView: UIView {
         let view = TGDrawingTools()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.events.changedType = { [weak self] type in
-            self?.events.toolTypeChanged(type)
+            guard let self = self else { return }
+            self.currentType = type
+            self.events.toolTypeChanged(TGToolState(type: type, color: self.currentColor, width: self.currentWidth))
         }
         view.events.showToolSlider = { [weak self] type in
             self?.setToolSlider(for: type, isHidden: false)
@@ -78,6 +88,11 @@ class TGToolPickerView: UIView {
         let view = TGSliderToolbar()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isHidden = true
+        view.events.sliderValueChanged = { [weak self] value in
+            guard let self = self else { return }
+            self.currentWidth = value
+            self.events.sliderValueChanged(self.currentToolState)
+        }
 
         return view
     }()
@@ -168,8 +183,9 @@ class TGToolPickerView: UIView {
 
 extension TGToolPickerView {
     public struct Events {
-        var toolTypeChanged: ((TGDrawingToolType) -> Void) = { _ in }
+        var toolTypeChanged: ((TGToolState) -> Void) = { _ in }
         var showToolSlider: ((TGDrawingToolType) -> Void) = { _ in }
+        var sliderValueChanged: ((TGToolState) -> Void) = { _ in }
     }
 }
 

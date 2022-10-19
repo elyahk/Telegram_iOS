@@ -9,10 +9,18 @@ import UIKit
 import PencilKit
 import Photos
 
+struct TGToolState {
+    let type: TGDrawingToolType
+    let color: UIColor
+    let width: CGFloat
+}
+
 class ImageViewController: RootViewController, PKToolPickerObserver {
     public var asset: PHAsset = PHAsset()
 
     public var image: UIImage = Images.sample_image.image
+
+    private lazy var tgToolState: TGToolState = TGToolState(type: .pen, color: .white, width: 1.0)
 
     private lazy var drawingStackManager: DrawingStackManager = {
         let drawingStackManager = DrawingStackManager(pkCanvasView)
@@ -76,12 +84,16 @@ class ImageViewController: RootViewController, PKToolPickerObserver {
     lazy var tgToolPickerView: TGToolPickerView = {
         let view = TGToolPickerView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.events.toolTypeChanged = { [weak self] type in
-            self?.changed(tool: type)
+        view.events.toolTypeChanged = { [weak self] state in
+            self?.changedTool(state: state)
         }
 
-        view.events.showToolSlider = { [weak self] type in
-            self?.changed(tool: type)
+        view.events.showToolSlider = { [weak self] state in
+//            self?.changed(tool: type)
+        }
+
+        view.events.sliderValueChanged = { [weak self] state in
+            self?.changedTool(state: state)
         }
 
         return view
@@ -152,16 +164,20 @@ extension ImageViewController {
 // MARK: - Functions
 
 extension ImageViewController {
-    private func changed(tool type: TGDrawingToolType) {
+    private func changedTool(state: TGToolState) {
+        let type = state.type
+        let color = state.color
+        let width = state.width
+
         switch type {
         case .pen:
-            pkCanvasView.tool = PKInkingTool(PKInkingTool.InkType.pen, color: UIColor.red, width: 5.0)
+            pkCanvasView.tool = PKInkingTool(PKInkingTool.InkType.pen, color: color, width: width)
         case .brush:
-            pkCanvasView.tool = PKInkingTool(PKInkingTool.InkType.marker, color: UIColor.red, width: 5.0)
+            pkCanvasView.tool = PKInkingTool(PKInkingTool.InkType.marker, color: color, width: width)
         case .neon:
-            pkCanvasView.tool = PKInkingTool(PKInkingTool.InkType.marker, color: UIColor.red, width: 5.0)
+            pkCanvasView.tool = PKInkingTool(PKInkingTool.InkType.marker, color: color, width: width)
         case .pencil:
-            pkCanvasView.tool = PKInkingTool(PKInkingTool.InkType.pencil, color: UIColor.red, width: 5.0)
+            pkCanvasView.tool = PKInkingTool(PKInkingTool.InkType.pencil, color: color, width: width)
         case .lasso:
             pkCanvasView.tool = PKLassoTool()
         case .eraser:
