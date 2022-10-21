@@ -70,7 +70,6 @@ class ImageViewController: RootViewController, PKToolPickerObserver {
         view.delegate = self
         view.alwaysBounceVertical = true
         view.drawing = pkDrawing
-        view.tool = PKInkingTool(PKInkingTool.InkType.pen, color: UIColor.red, width: 20.0)
 
         if #available(iOS 14.0, *) {
             view.drawingPolicy = PKCanvasViewDrawingPolicy.anyInput
@@ -182,6 +181,7 @@ extension ImageViewController {
             pkCanvasView.tool = PKLassoTool()
         case .eraser:
             pkCanvasView.tool = PKEraserTool(.vector)
+
         }
     }
 }
@@ -193,4 +193,8 @@ extension ImageViewController: PKCanvasViewDelegate {
         drawingStackManager.save()
         topToolbar.makeButtons(enable: !drawingStackManager.mementos.isEmpty)
     }
+}
+
+class PKBrushTool: PKTool {
+    
 }

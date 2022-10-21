@@ -8,9 +8,10 @@
 import UIKit
 
 class TempViewController: RootViewController {
-    private(set) lazy var tempView: TGSliderToolbar = {
-        let view = TGSliderToolbar()
+    private(set) lazy var tempView: TGCanvasView = {
+        let view = TGCanvasView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
 
         return view
     }()
@@ -28,7 +29,7 @@ class TempViewController: RootViewController {
             tempView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tempView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             tempView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            tempView.heightAnchor.constraint(equalToConstant: 24.0),
+            tempView.heightAnchor.constraint(equalToConstant: 300.0),
         ])
     }
 }
