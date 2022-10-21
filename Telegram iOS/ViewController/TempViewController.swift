@@ -8,8 +8,8 @@
 import UIKit
 
 class TempViewController: RootViewController {
-    private(set) lazy var tempView: FreeDrawingImageViewDrawLayer = {
-        let view = FreeDrawingImageViewDrawLayer()
+    private(set) lazy var tempView: TGCanvasView = {
+        let view = TGCanvasView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .black
 

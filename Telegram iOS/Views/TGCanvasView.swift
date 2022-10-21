@@ -1,139 +1,106 @@
 //
-//  TGCanvasView.swift
+//  CustomCanvasView.swift
 //  Telegram iOS
 //
-//  Created by eldorbek nusratov on 10/21/22.
+//  Created by Eldorbek Nusratov on 21/10/22.
 //
 
 import UIKit
 
-class TGCanvasView: UIView {
-    private var lines = [[CGPoint]]()
-    private var lastLine: [CGPoint] = []
-
-    private lazy var panGesture: UIPanGestureRecognizer = {
-        let view = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(sender:)))
-
-        return view
-    }()
-
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-
-        setupSubviews()
+// Draw GPU
+class TGCanvasView: UIView, Drawable {
+    var lineWidth: CGFloat = 5.0
+    var lineColor: UIColor = .white
+    var drawingLayer: CAShapeLayer?
+    
+    var line = [CGPoint]() {
+        didSet { checkIfTooManyPoints() }
     }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    var sublayers: [CALayer] {
+        return self.layer.sublayers ?? [CALayer]()
     }
-
-    private func setupSubviews() {
-        self.addGestureRecognizer(panGesture)
-    }
-
-    override func draw(_ layer: CALayer, in ctx: CGContext) {
-        super.draw(layer, in: ctx)
-        ctx.beginPath()
         
-        ctx.setStrokeColor(UIColor.red.cgColor)
-        ctx.setLineWidth(10)
-        ctx.setLineCap(.butt)
-
-        for (i, p) in lastLine.enumerated() {
-            if i == 0 {
-                ctx.move(to: p)
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let newTouchPoint = touches.first?.location(in: self) else { return }
+        line.append(newTouchPoint)
+        
+        let lastTouchPoint: CGPoint = line.last ?? .zero
+        
+        let rect = calculateRectBetween(lastPoint: lastTouchPoint, newPoint: newTouchPoint)
+        
+        layer.setNeedsDisplay(rect)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        flattenImage()
+    }
+    
+    override func draw(_ layer: CALayer, in ctx: CGContext) {
+        
+        let drawingLayer = self.drawingLayer ?? CAShapeLayer()
+        let linePath = UIBezierPath()
+        drawingLayer.contentsScale = Display.scale
+        
+        for (index, point) in line.enumerated() {
+            if index == 0 {
+                linePath.move(to: point)
             } else {
-                ctx.addLine(to: p)
+                linePath.addLine(to: point)
             }
         }
-        ctx.strokePath()
-
+        drawingLayer.path = linePath.cgPath
+        drawingLayer.opacity = 1
+        drawingLayer.lineWidth = lineWidth
+        drawingLayer.lineCap = .round
+        drawingLayer.lineJoin = .round
+        drawingLayer.fillColor = UIColor.clear.cgColor
+        drawingLayer.strokeColor = lineColor.cgColor
+        
+        if self.drawingLayer == nil {
+            self.drawingLayer = drawingLayer
+            layer.addSublayer(drawingLayer)
+        }
     }
-
-//    override func draw(_ rect: CGRect) {
-//        // custom drawing
-//        super.draw(rect)
-//
-//        guard let context = UIGraphicsGetCurrentContext() else { return }
-//
-//        // here are my lines
-//        // dummy data
-//        //        let startPoint = CGPoint(x: 0, y: 0)
-//        //        let endPoint = CGPoint(x: 100, y: 100)
-//        //
-//        //        context.move(to: startPoint)
-//        //        context.addLine(to: endPoint)
-//
-//        context.saveGState()
-//        context.setStrokeColor(UIColor.red.cgColor)
-//        context.setLineWidth(10)
-//        context.setLineCap(.butt)
-//
-//        for (i, p) in lastLine.enumerated() {
-//            if i == 0 {
-//                context.move(to: p)
-//            } else {
-//                context.addLine(to: p)
-//            }
-//        }
-//        //        lines.forEach { (line) in
-//        //            for (i, p) in line.enumerated() {
-//        //                if i == 0 {
-//        //                    context.move(to: p)
-////                } else {
-////                    context.addLine(to: p)
-////                }
-////            }
-////        }
-//
-//
-//    }
-
-    // let's ditch this line
-    //    var line = [CGPoint]()
-//
-//
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        lines.append([CGPoint]())
-//    }
-//
-//    // track the finger as we move across screen
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let point = touches.first?.location(in: nil) else { return }
-//        //        print(point)
-//
-//        guard var lastLine = lines.popLast() else { return }
-//        lastLine.append(point)
-//        lines.append(lastLine)
-//
-//        //        var lastLine = lines.last
-//        //        lastLine?.append(point)
-//
-//        //        line.append(point)
-//
-//        setNeedsDisplay()
-//    }
-
-    @objc func handlePanGesture(sender: UIPanGestureRecognizer) {
-        // get translation
-        let point = sender.location(in: self)
-
-        if panGesture.state == UIGestureRecognizer.State.began {
-            lastLine = [point]
+    
+    func checkIfTooManyPoints(maxPoints: Int = 25) {
+        if line.count > maxPoints {
+            updateFlattenedLayer()
+            // we leave two points to ensure no gaps or sharp angles
+            line.removeFirst(maxPoints - 2)
         }
-
-        if panGesture.state == UIGestureRecognizer.State.ended {
-            lastLine.append(point)
-            setNeedsDisplay()
-        }
-
-        if panGesture.state == UIGestureRecognizer.State.changed {
-            // add something you want to happen when the Label Panning has been change ( during the moving/panning )
-            lastLine.append(point)
-            setNeedsDisplay()
-        } else {
-            // or something when its not moving
-            print("or something when its not moving")
+    }
+    
+    func flattenImage() {
+        updateFlattenedLayer()
+        line.removeAll()
+    }
+    
+    func updateFlattenedLayer() {
+        // 1
+        guard let drawingLayer = drawingLayer,
+            // 2
+            let optionalDrawing = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(
+                NSKeyedArchiver.archivedData(withRootObject: drawingLayer, requiringSecureCoding: false))
+                as? CAShapeLayer
+            // 3
+             else { return }
+        
+        let newDrawing = optionalDrawing
+        layer.addSublayer(newDrawing)
+    }
+            
+    func clear() {
+        emptyFlattenedLayers()
+        drawingLayer?.removeFromSuperlayer()
+        drawingLayer = nil
+        line.removeAll()
+        layer.setNeedsDisplay()
+    }
+    
+    func emptyFlattenedLayers() {
+        for case let layer as CAShapeLayer in sublayers {
+            layer.removeFromSuperlayer()
         }
     }
 }
