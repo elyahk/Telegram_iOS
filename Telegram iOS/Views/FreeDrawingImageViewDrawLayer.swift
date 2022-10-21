@@ -9,10 +9,11 @@ import UIKit
 
 // Draw GPU
 class FreeDrawingImageViewDrawLayer: UIView, Drawable {
+
+    
     
     var drawingLayer: CAShapeLayer?
-    var displayLink: CADisplayLink?
-    var timer: Timer?
+//    var timer: Timer?
     var line = [CGPoint]() {
         didSet { checkIfTooManyPoints() }
     }
@@ -25,7 +26,6 @@ class FreeDrawingImageViewDrawLayer: UIView, Drawable {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let newTouchPoint = touches.first?.location(in: self) else { return }
-        stopAutoDrawing()
         line.append(newTouchPoint)
         
         let lastTouchPoint: CGPoint = line.last ?? .zero
@@ -93,32 +93,24 @@ class FreeDrawingImageViewDrawLayer: UIView, Drawable {
         let newDrawing = optionalDrawing
         layer.addSublayer(newDrawing)
     }
-    
-    func drawSpiralWithLink() {
-        let link = CADisplayLink(target: self, selector: #selector(drawSpiral))
-        link.add(to: .main, forMode: .default)
-        displayLink = link
-    }
-    
-    @objc func drawSpiral() {
-        if self.spiralPoints.isEmpty {
-            emptyFlattenedLayers()
-            drawingLayer?.removeFromSuperlayer()
-            drawingLayer = nil
-            line.removeAll()
-            spiralPoints.removeAll()
-            layer.setNeedsDisplay()
-            self.createSpiral()
-            self.flattenImage()
-        } else {
-            self.line.append(self.spiralPoints.removeFirst())
-            self.layer.setNeedsDisplay()
-            self.checkIfTooManyPoints()
-        }
-    }
+        
+//    @objc func drawSpiral() {
+//        if self.spiralPoints.isEmpty {
+//            emptyFlattenedLayers()
+//            drawingLayer?.removeFromSuperlayer()
+//            drawingLayer = nil
+//            line.removeAll()
+//            spiralPoints.removeAll()
+//            layer.setNeedsDisplay()
+//            self.flattenImage()
+//        } else {
+//            self.line.append(self.spiralPoints.removeFirst())
+//            self.layer.setNeedsDisplay()
+//            self.checkIfTooManyPoints()
+//        }
+//    }
     
     func clear() {
-        stopAutoDrawing()
         emptyFlattenedLayers()
         drawingLayer?.removeFromSuperlayer()
         drawingLayer = nil

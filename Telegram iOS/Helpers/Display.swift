@@ -5,7 +5,6 @@
 //  Created by Eldorbek Nusratov on 21/10/22.
 //
 
-
 import UIKit
 
 public final class Display {
