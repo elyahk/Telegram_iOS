@@ -9,11 +9,10 @@ import UIKit
 
 // Draw GPU
 class FreeDrawingImageViewDrawLayer: UIView, Drawable {
-
-    
-    
+    var lineWidth: CGFloat = 5.0
+    var lineColor: UIColor = .white
     var drawingLayer: CAShapeLayer?
-//    var timer: Timer?
+    
     var line = [CGPoint]() {
         didSet { checkIfTooManyPoints() }
     }
@@ -93,23 +92,7 @@ class FreeDrawingImageViewDrawLayer: UIView, Drawable {
         let newDrawing = optionalDrawing
         layer.addSublayer(newDrawing)
     }
-        
-//    @objc func drawSpiral() {
-//        if self.spiralPoints.isEmpty {
-//            emptyFlattenedLayers()
-//            drawingLayer?.removeFromSuperlayer()
-//            drawingLayer = nil
-//            line.removeAll()
-//            spiralPoints.removeAll()
-//            layer.setNeedsDisplay()
-//            self.flattenImage()
-//        } else {
-//            self.line.append(self.spiralPoints.removeFirst())
-//            self.layer.setNeedsDisplay()
-//            self.checkIfTooManyPoints()
-//        }
-//    }
-    
+            
     func clear() {
         emptyFlattenedLayers()
         drawingLayer?.removeFromSuperlayer()

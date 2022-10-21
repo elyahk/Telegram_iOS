@@ -7,22 +7,13 @@
 
 import UIKit
 
-protocol Drawable: class {
-//    var spiralPoints: [CGPoint] { get set }
-//    var displayLink: CADisplayLink? { get set }
-//    var timer: Timer? { get set }
-//    func hide()
-//    func unHide()
+protocol Drawable: AnyObject {
+    var lineWidth: CGFloat { get set }
+    var lineColor: UIColor { get set }
     func clear()
-//    func startAutoDrawingLink()
-//    func startAutoDrawingTimer()
-//    func drawSpiralWithLink()
-//    func drawSpiralWithTimer()
-//    func drawSpiral()
 }
 
 extension Drawable where Self: UIView {
-    
     var lineWidth: CGFloat { return 5 }
     var lineColor: UIColor { return .white }
             
