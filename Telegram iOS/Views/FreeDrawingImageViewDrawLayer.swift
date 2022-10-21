@@ -20,9 +20,7 @@ class FreeDrawingImageViewDrawLayer: UIView, Drawable {
     var sublayers: [CALayer] {
         return self.layer.sublayers ?? [CALayer]()
     }
-    
-    var spiralPoints = [CGPoint]()
-    
+        
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let newTouchPoint = touches.first?.location(in: self) else { return }
         line.append(newTouchPoint)
@@ -70,7 +68,7 @@ class FreeDrawingImageViewDrawLayer: UIView, Drawable {
         if line.count > maxPoints {
             updateFlattenedLayer()
             // we leave two points to ensure no gaps or sharp angles
-            _ = line.removeFirst(maxPoints - 2)
+            line.removeFirst(maxPoints - 2)
         }
     }
     
@@ -98,7 +96,6 @@ class FreeDrawingImageViewDrawLayer: UIView, Drawable {
         drawingLayer?.removeFromSuperlayer()
         drawingLayer = nil
         line.removeAll()
-        spiralPoints.removeAll()
         layer.setNeedsDisplay()
     }
     
