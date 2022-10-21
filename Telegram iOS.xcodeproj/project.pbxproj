@@ -91,6 +91,7 @@
 		6E6D810A28F89F5800C574F7 /* TempViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewController.swift; sourceTree = "<group>"; };
 		6E96C3FF2902D6B90038D31F /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
 		6E96C4012902D6E80038D31F /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
+		6E96C4032902F5DA0038D31F /* TestPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6EE4FDE428FBBD18001F9A9F /* TGSliderToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TGSliderToolbar.swift; sourceTree = "<group>"; };
 		6EE8CA0428F74D8D007D6C94 /* ShimmeringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimmeringView.swift; sourceTree = "<group>"; };
 		6EE8CA0528F74D8D007D6C94 /* ShimmeringLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimmeringLayer.swift; sourceTree = "<group>"; };
@@ -225,6 +226,7 @@
 				6E5F5F4828F4988900FDBDE7 /* AppDelegate.swift */,
 				6E5F5F5328F4988A00FDBDE7 /* LaunchScreen.storyboard */,
 				6E5F5F5628F4988A00FDBDE7 /* Info.plist */,
+				6E96C4032902F5DA0038D31F /* TestPlayground.playground */,
 			);
 			path = "Telegram iOS";
 			sourceTree = "<group>";

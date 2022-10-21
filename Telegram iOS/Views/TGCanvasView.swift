@@ -37,6 +37,7 @@ class TGCanvasView: UIView, Drawable {
         let drawingLayer = self.drawingLayer ?? CAShapeLayer()
         let linePath = UIBezierPath()
         drawingLayer.contentsScale = Display.scale
+        line = douglasPeucker(points: line, epsilon: 2.0)
         
         for (index, point) in line.enumerated() {
             if index == 0 {
