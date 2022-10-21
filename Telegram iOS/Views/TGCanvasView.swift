@@ -24,11 +24,8 @@ class TGCanvasView: UIView, Drawable {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let newTouchPoint = touches.first?.location(in: self) else { return }
         line.append(newTouchPoint)
-        
         let lastTouchPoint: CGPoint = line.last ?? .zero
-        
-        let rect = calculateRectBetween(lastPoint: lastTouchPoint, newPoint: newTouchPoint)
-        
+        let rect = calculateRectBetween(lastPoint: lastTouchPoint, newPoint: newTouchPoint, lineWidth: lineWidth)
         layer.setNeedsDisplay(rect)
     }
     
@@ -37,7 +34,6 @@ class TGCanvasView: UIView, Drawable {
     }
     
     override func draw(_ layer: CALayer, in ctx: CGContext) {
-        
         let drawingLayer = self.drawingLayer ?? CAShapeLayer()
         let linePath = UIBezierPath()
         drawingLayer.contentsScale = Display.scale
@@ -49,6 +45,7 @@ class TGCanvasView: UIView, Drawable {
                 linePath.addLine(to: point)
             }
         }
+        
         drawingLayer.path = linePath.cgPath
         drawingLayer.opacity = 1
         drawingLayer.lineWidth = lineWidth

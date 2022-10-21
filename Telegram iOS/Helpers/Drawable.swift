@@ -8,18 +8,11 @@
 import UIKit
 
 protocol Drawable: AnyObject {
-    var lineWidth: CGFloat { get set }
-    var lineColor: UIColor { get set }
     func clear()
 }
 
 extension Drawable where Self: UIView {
-    var lineWidth: CGFloat { return 5 }
-    var lineColor: UIColor { return .white }
-            
-    // Helper methods
-    
-    func calculateRectBetween(lastPoint: CGPoint, newPoint: CGPoint) -> CGRect {
+    func calculateRectBetween(lastPoint: CGPoint, newPoint: CGPoint, lineWidth: CGFloat) -> CGRect {
         let originX = min(lastPoint.x, newPoint.x) - (lineWidth / 2)
         let originY = min(lastPoint.y, newPoint.y) - (lineWidth / 2)
         
