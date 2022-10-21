@@ -63,8 +63,7 @@ class FreeDrawingImageViewDrawLayer: UIView, Drawable {
         }
     }
     
-    func checkIfTooManyPoints() {
-        let maxPoints = 25
+    func checkIfTooManyPoints(maxPoints: Int = 25) {
         if line.count > maxPoints {
             updateFlattenedLayer()
             // we leave two points to ensure no gaps or sharp angles
