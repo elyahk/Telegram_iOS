@@ -22,6 +22,7 @@ class TGToolPickerView: UIView {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.setImage(Images.roundTip.image, for: .normal)
+        view.addTarget(self, action: #selector(coloPickerPresent), for: .touchUpInside)
         view.layer.cornerRadius = universalWidth(15.0)
         view.makeRectangle()
 
@@ -195,5 +196,31 @@ private extension UIButton {
     func makeRectangle(width: CGFloat = universalWidth(33.0), height: CGFloat = universalWidth(33.0)) {
         self.heightAnchor.constraint(equalToConstant: width).isActive = true
         self.widthAnchor.constraint(equalToConstant: height).isActive = true
+    }
+}
+
+extension TGToolPickerView: UIColorPickerViewControllerDelegate{
+    
+    @objc private func coloPickerPresent(){
+        if #available(iOS 14.0, *) {
+            let colorPickerVC = UIColorPickerViewController()
+            colorPickerVC.delegate = self
+
+            
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    @available(iOS 14.0, *)
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        let color = viewController.selectedColor
+        colorPickerButton.tintColor = color
+    }
+    
+    @available(iOS 14.0, *)
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        let color = viewController.selectedColor
+        colorPickerButton.tintColor = color
     }
 }
